@@ -1,0 +1,36 @@
+.demo-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.demo-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.note-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}

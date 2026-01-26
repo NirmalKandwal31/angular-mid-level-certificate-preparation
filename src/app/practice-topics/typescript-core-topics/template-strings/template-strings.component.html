@@ -1,0 +1,89 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Backticks & Template Strings</h3>
+            <p class="text-muted mb-0">
+                Using backticks (`) for string interpolation and multi-line strings.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Template Strings?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of introPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- String Interpolation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">String Interpolation</h5>
+            <p class="text-muted">
+                Template strings allow embedding variables and expressions directly
+                inside strings using
+                <code>&#36;&#123; expression &#125;</code>.
+            </p>
+
+            <pre class="code-box"><code>{{ interpolationCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Expressions -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Using Expressions</h5>
+            <p class="text-muted">
+                You can evaluate any valid JavaScript expression inside a template string.
+            </p>
+
+            <pre class="code-box"><code>{{ expressionCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Multiline -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Multiline Strings</h5>
+            <p class="text-muted">
+                Template strings support multi-line text without using newline characters
+                like <code>\n</code>.
+            </p>
+
+            <pre class="code-box"><code>{{ multilineCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Comparison: Old Way vs Template Strings</h5>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="snippet danger">
+                        <div class="snippet-title">Without Template Strings</div>
+                        <pre class="code-box"><code>{{ comparisonOldWay }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="snippet success">
+                        <div class="snippet-title">With Template Strings</div>
+                        <pre class="code-box"><code>{{ comparisonNewWay }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Angular Note -->
+    <div class="alert alert-info mb-0">
+        <strong>Angular Note:</strong> {{ angularNote }}
+    </div>
+</div>

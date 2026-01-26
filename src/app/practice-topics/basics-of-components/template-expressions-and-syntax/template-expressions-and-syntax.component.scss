@@ -1,0 +1,33 @@
+.demo-box {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 14px;
+  background: #f8f9fa;
+  height: 100%;
+}
+
+.demo-title {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    color: inherit;
+  }
+}
+
+.code-dark {
+  background: #111827;
+}

@@ -1,0 +1,59 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Nullish Coalescing Operator (??)</h3>
+        <p class="text-muted mb-0">
+            Providing default values only for <code>null</code> or <code>undefined</code>.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is the Nullish Coalescing Operator?</h5>
+            <p class="text-muted mb-2">
+                The <strong>nullish coalescing operator (??)</strong> returns the right-hand
+                value only when the left-hand value is
+                <strong>null</strong> or <strong>undefined</strong>.
+            </p>
+
+            <pre class="code-box"><code>{{ basicExampleCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Live Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Live Example</h5>
+
+            <div class="example-box">
+                <strong>userName:</strong> {{ userName }} <br />
+                <strong>Displayed Name:</strong> {{ displayName }}
+            </div>
+
+            <p class="note-text mt-2">
+                Since <code>userName</code> is <code>null</code>,
+                <code>'Guest User'</code> is shown.
+            </p>
+        </div>
+    </div>
+
+    <!-- Explanation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Why use ?? instead of ||</h5>
+            <ul class="text-muted mb-2">
+                <li *ngFor="let point of explanationPoints">{{ point }}</li>
+            </ul>
+
+            <pre class="code-box"><code>{{ comparisonCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Important Note -->
+    <div class="alert alert-info mb-0">
+        <strong>Important:</strong>
+        If <code>userName</code> has a value like
+        <code>''</code>, <code>0</code>, or <code>false</code>,
+        the <code>??</code> operator will NOT replace it.
+    </div>
+</div>

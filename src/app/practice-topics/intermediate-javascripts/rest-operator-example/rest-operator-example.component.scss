@@ -1,0 +1,38 @@
+.list-box {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+
+  li {
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    background: #ffffff;
+    font-weight: 500;
+  }
+}
+
+.rest-box li {
+  border-left: 4px solid #0d6efd;
+  background: #f3f7ff;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 10px;
+  overflow-x: auto;
+
+  code {
+    color: inherit;
+  }
+}
+
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}

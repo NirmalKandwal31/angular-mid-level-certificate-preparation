@@ -1,0 +1,35 @@
+.card {
+  border-radius: 12px;
+}
+
+.mini {
+  border: 1px solid #e9ecef;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.mini-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.item {
+  border: 1px solid #f1f3f5;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item.ok {
+  border-left: 4px solid #198754;
+  background: #f3faf7;
+}
+
+.muted {
+  color: #6c757d;
+  font-weight: 600;
+}

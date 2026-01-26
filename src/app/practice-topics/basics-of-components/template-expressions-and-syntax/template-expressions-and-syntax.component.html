@@ -1,0 +1,206 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Template Expressions and Syntax</h3>
+            <p class="text-muted mb-0">
+                Interpolation, bindings, pipes, and safe navigation (?.) with live demos.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let x of introBullets">{{ x }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 1) Interpolation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                <h5 class="mb-0">1) Interpolation</h5>
+                <span class="badge bg-primary">Example</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>{{'{{ value }}'}}</code> to print component values into HTML. This is one-way (TS → HTML).
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <div class="demo-box">
+                        <div class="demo-title">Live Demo</div>
+                        <p class="mb-1">Hello, <strong>{{ user.name }}</strong>!</p>
+                        <p class="mb-0">City: {{ user.city }}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="mb-2 fw-semibold">Template</div>
+                    <pre class="code-box mb-3"><code>{{ interpolationTemplate }}</code></pre>
+
+                    <div class="mb-2 fw-semibold">Component (TS)</div>
+                    <pre class="code-box code-dark mb-0"><code>{{ interpolationTs }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2) Property Binding -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                <h5 class="mb-0">2) Property Binding</h5>
+                <span class="badge bg-primary">Example</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>[property]="expression"</code> to bind a DOM property to a component value.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <div class="demo-box">
+                        <div class="demo-title">Live Demo</div>
+
+                        <button class="btn btn-primary me-2" [disabled]="!isPremium">
+                            Premium Action
+                        </button>
+
+                        <button class="btn btn-outline-secondary" (click)="onTogglePremium()">
+                            Toggle Premium ({{ isPremium ? 'ON' : 'OFF' }})
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="mb-2 fw-semibold">Template</div>
+                    <pre class="code-box mb-3"><code>{{ propertyBindingTemplate }}</code></pre>
+
+                    <div class="mb-2 fw-semibold">Component (TS)</div>
+                    <pre class="code-box code-dark mb-0"><code>{{ propertyBindingTs }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3) Event Binding -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                <h5 class="mb-0">3) Event Binding</h5>
+                <span class="badge bg-primary">Example</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>(event)="handler()"</code> to react to DOM events and call component methods.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <div class="demo-box">
+                        <div class="demo-title">Live Demo</div>
+
+                        <button class="btn btn-success" (click)="onIncrement()">
+                            Increment
+                        </button>
+
+                        <p class="mt-2 mb-0">{{ message }}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="mb-2 fw-semibold">Template</div>
+                    <pre class="code-box mb-3"><code>{{ eventBindingTemplate }}</code></pre>
+
+                    <div class="mb-2 fw-semibold">Component (TS)</div>
+                    <pre class="code-box code-dark mb-0"><code>{{ eventBindingTs }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4) Pipes -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                <h5 class="mb-0">4) Pipes</h5>
+                <span class="badge bg-primary">Example</span>
+            </div>
+
+            <p class="text-muted">
+                Pipes transform values for display: <code>value | pipeName</code>.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <div class="demo-box">
+                        <div class="demo-title">Live Demo</div>
+
+                        <p class="mb-1">Product: <strong>{{ product.title }}</strong></p>
+                        <p class="mb-1">Price: {{ product.price | currency:'EUR' }}</p>
+                        <p class="mb-0">Uppercase title: {{ product.title | uppercase }}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="mb-2 fw-semibold">Template</div>
+                    <pre class="code-box mb-3"><code>{{ pipesTemplate }}</code></pre>
+
+                    <div class="mb-2 fw-semibold">Component (TS)</div>
+                    <pre class="code-box code-dark mb-0"><code>{{ pipesTs }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5) Safe Navigation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                <h5 class="mb-0">5) Safe Navigation Operator (?.)</h5>
+                <span class="badge bg-primary">Example</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>?.</code> to avoid runtime errors when values can be <code>null</code> or
+                <code>undefined</code>.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-5">
+                    <div class="demo-box">
+                        <div class="demo-title">Live Demo</div>
+
+                        <p class="mb-1">Email: <strong>{{ maybeUser?.profile?.email }}</strong></p>
+                        <p class="mb-0">Phone (safe): {{ maybeUser?.profile?.phone }}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="mb-2 fw-semibold">Template</div>
+                    <pre class="code-box mb-3"><code>{{ safeNavTemplate }}</code></pre>
+
+                    <div class="mb-2 fw-semibold">Component (TS)</div>
+                    <pre class="code-box code-dark mb-0"><code>{{ safeNavTs }}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Best Practices</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let b of bestPractices">{{ b }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

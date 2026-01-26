@@ -1,0 +1,112 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Hoisting, var vs let</h3>
+        <p class="text-muted mb-0">
+            Learn hoisting, scope differences, and why loops behave differently with
+            <code>var</code> and <code>let</code>.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is Hoisting?</h5>
+
+            <p class="text-muted mb-2">
+                Hoisting is JavaScript behavior where variable and function declarations
+                are processed before the code runs.
+            </p>
+
+            <ul class="text-muted mb-0">
+                <li>
+                    <code>var</code> is hoisted and initialized with <code>undefined</code>.
+                </li>
+                <li>
+                    <code>let</code> is hoisted but cannot be accessed before initialization
+                    (this is called the <strong>Temporal Dead Zone</strong>).
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Block Scope -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">1) Block Scope (var vs let)</h5>
+
+            <p class="text-muted mb-3">
+                <code>var</code> is function-scoped, so it can be accessed outside an
+                <code>if</code> block. <code>let</code> is block-scoped, so it exists only
+                inside the block.
+            </p>
+
+            <div class="example-box var-box mb-2">
+                <strong>var result:</strong>
+                <span>{{ blockVarMessage }}</span>
+            </div>
+
+            <div class="example-box let-box mb-0">
+                <strong>let result:</strong>
+                <span>{{ blockLetMessage }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loop + Closure -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">2) Loop + Closure Example</h5>
+
+            <p class="text-muted mb-2">
+                Expected values: <code>0</code>, <code>1</code>, <code>2</code>
+            </p>
+
+            <div class="row g-3">
+                <!-- var -->
+                <div class="col-12 col-md-6">
+                    <div class="result-card var-card h-100">
+                        <h6 class="mb-2">Using <code>var</code> (Problem)</h6>
+
+                        <ul class="result-list mb-2">
+                            <li *ngFor="let item of varLoopResult">{{ item }}</li>
+                        </ul>
+
+                        <p class="text-muted small mb-0">
+                            With <code>var</code>, the loop variable is shared across all
+                            iterations. When callbacks run, the loop has finished, so you often
+                            see the same final value repeated.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- let -->
+                <div class="col-12 col-md-6">
+                    <div class="result-card let-card h-100">
+                        <h6 class="mb-2">Using <code>let</code> (Correct)</h6>
+
+                        <ul class="result-list mb-2">
+                            <li *ngFor="let item of letLoopResult">{{ item }}</li>
+                        </ul>
+
+                        <p class="text-muted small mb-0">
+                            With <code>let</code>, each iteration gets its own block-scoped
+                            variable, so callbacks preserve the correct value.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>var</code> is function-scoped and can cause unexpected bugs.</li>
+                <li><code>let</code> is block-scoped and safer for modern JavaScript.</li>
+                <li>Prefer <code>let</code> and <code>const</code> in Angular apps.</li>
+            </ul>
+        </div>
+    </div>
+</div>

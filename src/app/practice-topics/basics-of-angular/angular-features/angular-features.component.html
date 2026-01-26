@@ -1,0 +1,65 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Features of the Angular Framework</h3>
+            <p class="text-muted mb-0">
+                A practical overview of what Angular provides and why it’s useful.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let b of introBullets">{{ b }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="row g-3">
+        <div class="col-12 col-lg-6" *ngFor="let f of features">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                        <h5 class="mb-0">{{ f.title }}</h5>
+                        <span class="badge bg-primary">Feature</span>
+                    </div>
+
+                    <p class="text-muted mb-2">{{ f.description }}</p>
+
+                    <div class="why-box mb-3">
+                        <div class="why-title">Why it matters</div>
+                        <div class="text-muted">{{ f.whyItMatters }}</div>
+                    </div>
+
+                    <div class="mt-auto" *ngIf="f.example">
+                        <div class="mb-2 fw-semibold">Example</div>
+                        <pre class="code-box mb-3"><code>{{ f.example }}</code></pre>
+                    </div>
+
+                    <div *ngIf="f.tips?.length">
+                        <div class="mb-2 fw-semibold">Tips</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let t of f.tips">{{ t }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Closing notes -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Notes</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let x of closingNotes">{{ x }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

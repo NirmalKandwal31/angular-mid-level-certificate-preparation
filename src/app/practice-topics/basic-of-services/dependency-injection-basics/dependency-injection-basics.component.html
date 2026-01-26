@@ -1,0 +1,152 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Dependency Injection in Angular</h3>
+            <p class="text-muted mb-0">
+                DI basics • Injectable services • Providers • Hierarchical injectors
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is Dependency Injection (DI)?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of overviewPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Injectable -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Injectable Services</h5>
+            <p class="text-muted">
+                <code>Injectable</code> tells Angular that a class can be created and injected by the DI system.
+                Using <code>providedIn: 'root'</code> is the most common approach.
+            </p>
+
+            <pre class="code-box mb-0"><code [textContent]="injectableSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Constructor injection -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Injecting a Service (Constructor Injection)</h5>
+            <p class="text-muted">
+                Angular injects dependencies through the constructor. You don’t create the dependency with
+                <code>new</code>.
+                Angular creates it and passes it in.
+            </p>
+
+            <pre class="code-box mb-0"><code [textContent]="injectConstructorSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Providers -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Providers</h5>
+            <p class="text-muted">
+                A <strong>provider</strong> tells Angular how to create a dependency and in which injector scope it
+                should live.
+            </p>
+
+            <ul class="text-muted mb-3">
+                <li *ngFor="let p of providerPoints">{{ p }}</li>
+            </ul>
+
+            <div class="fw-semibold mb-2">Component-level provider example</div>
+            <pre class="code-box mb-0"><code [textContent]="providerComponentSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Hierarchical Injectors -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Hierarchical Injectors</h5>
+            <p class="text-muted">
+                Angular doesn’t have just one injector—there is an injector tree. This controls which instance you get.
+            </p>
+
+            <ul class="text-muted mb-3">
+                <li *ngFor="let h of hierarchicalPoints">{{ h }}</li>
+            </ul>
+
+            <pre class="code-box mb-0"><code [textContent]="hierarchySnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo (Services + DI)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                Here, <code>UserService</code> depends on <code>LoggerService</code>. Angular injects LoggerService into
+                UserService.
+            </p>
+
+            <div class="demo-box mb-3">
+                <label class="form-label fw-semibold mb-1">Set User Name</label>
+                <div class="d-flex gap-2 flex-wrap">
+                    <input class="form-control" [(ngModel)]="newName" placeholder="e.g. John" />
+                    <button type="button" class="btn btn-outline-primary" (click)="setName()">Set Name</button>
+                    <button type="button" class="btn btn-outline-secondary" (click)="readUser()">Read Current</button>
+                </div>
+
+                <div class="mt-2">
+                    <strong>Current User:</strong>
+                    <code>{{ currentUser || '(not loaded yet)' }}</code>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap mb-2">
+                <div class="fw-semibold">Logs (LoggerService)</div>
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="clearLogs()">Clear Logs</button>
+            </div>
+
+            <div class="logs">
+                <div *ngIf="logger.getLogs().length === 0" class="text-muted">
+                    No logs yet. Try setting/reading the user.
+                </div>
+
+                <ul *ngIf="logger.getLogs().length > 0" class="mb-0">
+                    <li *ngFor="let l of logger.getLogs()">{{ l }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Injector API (optional) -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Injector (Optional)</h5>
+            <p class="text-muted">
+                Angular also provides the <code>Injector</code> API to resolve dependencies manually.
+                Constructor injection is preferred in most cases.
+            </p>
+            <pre class="code-box mb-0"><code [textContent]="injectorSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li>DI means dependencies are provided to classes instead of created inside them.</li>
+                <li><code>Injectable</code> enables Angular to inject a service.</li>
+                <li>Providers define how and where an instance is created.</li>
+                <li>Hierarchical injectors decide which instance you receive.</li>
+            </ul>
+        </div>
+    </div>
+</div>

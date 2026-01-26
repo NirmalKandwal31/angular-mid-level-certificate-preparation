@@ -1,0 +1,120 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Component Selector</h3>
+            <p class="text-muted mb-0">
+                How Angular identifies and renders a component inside templates.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is a selector?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let o of overview">{{ o }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Selector Types -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Selector types</h5>
+                <span class="badge bg-primary">Common patterns</span>
+            </div>
+
+            <div class="row g-3 mt-1">
+                <div class="col-12 col-lg-4" *ngFor="let s of selectorTypes">
+                    <div class="type-card h-100">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                            <h6 class="mb-0">{{ s.type }}</h6>
+                            <span class="badge bg-light text-dark border">Type</span>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="label">Selector syntax</div>
+                            <pre class="code-box"><code>{{ s.syntax }}</code></pre>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="label">Template usage</div>
+                            <pre class="code-box"><code>{{ s.example }}</code></pre>
+                        </div>
+
+                        <p class="text-muted mb-2"><strong>When to use:</strong> {{ s.whenToUse }}</p>
+
+                        <ul class="text-muted small mb-0" *ngIf="s.notes?.length">
+                            <li *ngFor="let n of s.notes">{{ n }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Where selector is used -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-4" *ngFor="let w of whereUsed">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="mb-2">{{ w.title }}</h6>
+                    <p class="text-muted mb-0">{{ w.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conventions -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Naming conventions</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let c of conventions">{{ c }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Do/Don't -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Do / Don’t</h5>
+
+            <div class="row g-3 mt-1">
+                <div class="col-12 col-lg-4" *ngFor="let d of doDonts">
+                    <div class="rule-card h-100">
+                        <h6 class="mb-2">{{ d.title }}</h6>
+
+                        <div class="mb-2">
+                            <div class="label-good">Good</div>
+                            <pre class="code-box code-good"><code>{{ d.good }}</code></pre>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="label-avoid">Avoid</div>
+                            <pre class="code-box code-avoid"><code>{{ d.avoid }}</code></pre>
+                        </div>
+
+                        <p class="text-muted mb-0"><strong>Why:</strong> {{ d.why }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimal Example -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Minimal example</h5>
+                <span class="text-muted small">Definition + usage</span>
+            </div>
+
+            <pre class="code-box code-dark mb-0"><code>{{ minimalExample }}</code></pre>
+        </div>
+    </div>
+</div>

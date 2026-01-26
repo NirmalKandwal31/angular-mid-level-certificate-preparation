@@ -1,0 +1,58 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Enums in TypeScript</h3>
+        <p class="text-muted mb-0">
+            Enums define a set of named constant values.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is an Enum?</h5>
+            <p class="text-muted mb-2">
+                An <strong>enum</strong> (enumeration) is a TypeScript feature that allows
+                you to define a collection of related constant values.
+            </p>
+
+            <p class="text-muted mb-0">
+                Enums help avoid magic strings and make code easier to read and maintain.
+            </p>
+
+            <pre class="code-box mt-2"><code>{{ enumDefinitionCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Why Enums -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Why use Enums?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let point of whyEnumPoints">{{ point }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Usage -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Enum Usage Example</h5>
+            <p class="text-muted">
+                Below values are assigned using enum members.
+            </p>
+
+            <pre class="code-box"><code>{{ usageCode }}</code></pre>
+
+            <div class="example-box mt-2">
+                <strong>Favorite Color:</strong> {{ favoriteColor }} <br />
+                <strong>Non-favorite Color:</strong> {{ nonFavoriteColor }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Enum vs String -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Enum vs Plain String</h5>
+            <p class="text-muted">
+                Enums restrict values, while plain strings allow a

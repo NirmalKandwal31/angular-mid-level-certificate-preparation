@@ -1,0 +1,14 @@
+<h1>Summary:</h1>
+<p>{{selectedConfig().description}}</p>
+<p>{{selectedConfig().range}}</p>
+<p>{{selectedConfig().speed}}</p>
+<p>{{selectedConfig().price}}</p>
+<p><strong>Yoke Steering Wheel:</strong>
+    {{ yokeSelected() ? 'Yes (+$1000)' : 'No' }}
+</p>
+
+<p><strong>Tow Hitch Package:</strong>
+    {{ towSelected() ? 'Yes (+$1000)' : 'No' }}
+</p>
+
+<p>Total price : {{ totalPrice()}}</p>

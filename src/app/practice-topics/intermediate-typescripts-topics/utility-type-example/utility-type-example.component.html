@@ -1,0 +1,103 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">TypeScript Utility Types</h3>
+        <p class="text-muted mb-0">
+            Utility types help transform existing types without rewriting them.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What are Utility Types?</h5>
+            <p class="text-muted mb-2">
+                Utility types are built-in generic types in TypeScript.
+                They help create new types based on existing ones.
+            </p>
+
+            <pre class="code-box"><code>{{ userTypeCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Original -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Original User Objects</h5>
+            <ul class="list-box">
+                <li *ngFor="let user of users">
+                    Name: {{ user.name }},
+                    Age: {{ user.age }},
+                    IsAdmin: {{ user.isAdmin }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Partial -->
+    <div class="card shadow-sm mb-3 partial-card">
+        <div class="card-body">
+            <h5>Partial&lt;User&gt;</h5>
+            <p class="text-muted">
+                <code>Partial&lt;T&gt;</code> makes all properties optional.
+                Commonly used in update/edit forms.
+            </p>
+
+            <pre class="code-box"><code>{{ partialCode }}</code></pre>
+
+            <div class="example-box mt-2">
+                Name: {{ partialUser.name }} <br />
+                Age: {{ partialUser.age }} <br />
+                IsAdmin: {{ partialUser.isAdmin || 'Not provided' }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Required -->
+    <div class="card shadow-sm mb-3 required-card">
+        <div class="card-body">
+            <h5>Required&lt;User&gt;</h5>
+            <p class="text-muted">
+                <code>Required&lt;T&gt;</code> forces all properties to be present.
+            </p>
+
+            <pre class="code-box"><code>{{ requiredCode }}</code></pre>
+
+            <div class="example-box mt-2">
+                Name: {{ requiredUser.name }} <br />
+                Age: {{ requiredUser.age }} <br />
+                IsAdmin: {{ requiredUser.isAdmin }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Readonly -->
+    <div class="card shadow-sm readonly-card">
+        <div class="card-body">
+            <h5>Readonly&lt;User&gt;</h5>
+            <p class="text-muted">
+                <code>Readonly&lt;T&gt;</code> prevents modification after initialization.
+            </p>
+
+            <pre class="code-box"><code>{{ readonlyCode }}</code></pre>
+
+            <div class="example-box mt-2">
+                Name: {{ readonlyUser.name }} <br />
+                Age: {{ readonlyUser.age }} <br />
+                IsAdmin: {{ readonlyUser.isAdmin }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>Partial</code> → optional properties</li>
+                <li><code>Required</code> → mandatory properties</li>
+                <li><code>Readonly</code> → immutable objects</li>
+                <li>Utility types reduce duplication and bugs</li>
+            </ul>
+        </div>
+    </div>
+</div>

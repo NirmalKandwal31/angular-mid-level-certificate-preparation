@@ -1,0 +1,102 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">What is TypeScript?</h3>
+            <p class="text-muted mb-0">
+                Understanding TypeScript, its features, and why it is used with Angular.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Definition</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of introPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Superset -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">TypeScript is a Superset of JavaScript</h5>
+            <p class="text-muted mb-3">
+                Being a superset means every valid JavaScript program is also a valid
+                TypeScript program. TypeScript only adds extra features on top of JavaScript.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="snippet danger">
+                        <div class="snippet-title">JavaScript</div>
+                        <pre class="code-box"><code>{{ supersetExample.js }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="snippet success">
+                        <div class="snippet-title">TypeScript</div>
+                        <pre class="code-box"><code>{{ supersetExample.ts }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Types -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Types in TypeScript</h5>
+            <p class="text-muted">
+                TypeScript introduces static types to JavaScript, allowing variables,
+                function parameters, and return values to have specific types.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6" *ngFor="let t of typeExamples">
+                    <div class="snippet">
+                        <div class="snippet-title">{{ t.title }}</div>
+                        <pre class="code-box"><code>{{ t.code }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interfaces -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Interfaces</h5>
+            <p class="text-muted">
+                Interfaces define the structure of an object. They help ensure that an
+                object follows a specific shape.
+            </p>
+
+            <pre class="code-box"><code>{{ interfaceExample }}</code></pre>
+
+            <p class="text-muted mt-2 mb-0">
+                Interfaces improve consistency and are heavily used in Angular for
+                components, services, and API responses.
+            </p>
+        </div>
+    </div>
+
+    <!-- Tooling -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Better Tooling Support</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let tool of toolingPoints">{{ tool }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Angular Note -->
+    <div class="alert alert-info mb-0">
+        <strong>Angular Note:</strong> {{ angularNote }}
+    </div>
+</div>

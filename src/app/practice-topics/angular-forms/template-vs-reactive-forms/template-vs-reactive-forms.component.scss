@@ -1,0 +1,57 @@
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+.result-box {
+  border: 1px solid #e9ecef;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 12px;
+
+  pre {
+    background: transparent;
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+.mini-title {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.mini-card {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  height: 100%;
+}
+
+.mini-card.ok {
+  border-left: 4px solid #198754;
+  background: #f3faf7;
+}
+
+.mini-card.warn {
+  border-left: 4px solid #fd7e14;
+  background: #fff7ed;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}

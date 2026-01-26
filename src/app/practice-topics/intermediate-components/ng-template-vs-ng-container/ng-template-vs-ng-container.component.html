@@ -1,0 +1,154 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">ng-template vs ng-container</h3>
+            <p class="text-muted mb-0">
+                ng-template renders lazily • ng-container groups without DOM node
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of overviewPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                This demo shows how <code>ng-container</code> avoids extra DOM wrappers
+                and how <code>ng-template</code> renders only when referenced (lazy).
+            </p>
+
+            <div class="demo-box">
+                <div class="d-flex gap-2 flex-wrap mb-3">
+                    <button class="btn btn-outline-primary" (click)="showBox = !showBox">
+                        Toggle ng-container block
+                    </button>
+
+                    <button class="btn btn-outline-success" (click)="showElseBlock = !showElseBlock">
+                        Toggle ng-template else block
+                    </button>
+                </div>
+
+                <!-- ✅ ng-container demo -->
+                <div class="mini-card mb-3">
+                    <div class="mini-title">ng-container Demo (no extra DOM node)</div>
+
+                    <p class="text-muted small mb-2">
+                        When <code>showBox</code> is true, we render multiple elements using
+                        <code>ng-container</code> without adding an extra wrapper div.
+                    </p>
+
+                    <ng-container *ngIf="showBox">
+                        <div class="alert alert-info mb-2">
+                            This block is rendered using <strong>ng-container</strong>.
+                        </div>
+                        <ul class="mb-0">
+                            <li *ngFor="let u of users">
+                                {{ u.name }} ({{ u.role }})
+                            </li>
+                        </ul>
+                    </ng-container>
+
+                    <div class="text-muted" *ngIf="!showBox">
+                        Block is hidden. Click "Toggle ng-container block".
+                    </div>
+                </div>
+
+                <!-- ✅ ng-template demo -->
+                <div class="mini-card">
+                    <div class="mini-title">ng-template Demo (lazy rendering)</div>
+
+                    <p class="text-muted small mb-2">
+                        <code>ng-template</code> content is not shown unless referenced.
+                        Here we use it as an <code>else</code> block.
+                    </p>
+
+                    <div *ngIf="showElseBlock; else elseTpl" class="alert alert-success mb-0">
+                        ✅ Condition is TRUE, so this normal HTML renders.
+                    </div>
+
+                    <ng-template #elseTpl>
+                        <div class="alert alert-warning mb-0">
+                            ⚠️ Condition is FALSE, so Angular renders this <strong>ng-template</strong>.
+                            (Lazy: it renders only when referenced.)
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explanation cards -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">ng-container</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of containerPoints">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">ng-template</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of templatePoints">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) ng-container example</div>
+                <pre class="code-box mb-0"><code [textContent]="containerSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) ng-template with *ngIf else</div>
+                <pre class="code-box mb-0"><code [textContent]="templateIfElseSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) ngTemplateOutlet (render template explicitly)</div>
+                <pre class="code-box mb-0"><code [textContent]="outletSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>ng-container</code> = structural wrapper with <strong>no extra DOM element</strong>.</li>
+                <li><code>ng-template</code> = <strong>lazy</strong> block that renders only when referenced.</li>
+                <li>Use <code>ng-template</code> for else blocks, reusable templates, and dynamic rendering.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">RxJS Interoperability (Signals + RxJS)</h3>
+            <p class="text-muted mb-0">toSignal() • toObservable() • RxJS for async streams</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <p class="text-muted mb-2">{{ intro }}</p>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- When to use what -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">When to Use RxJS</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of whenUseRxjs">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">When to Use Signals</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of whenUseSignals">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Demos -->
+    <div class="row g-3 mb-3">
+        <!-- Demo A -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">Demo A: Observable → Signal (toSignal)</h5>
+                        <span class="badge bg-primary">toSignal</span>
+                    </div>
+
+                    <p class="text-muted">
+                        We convert <code>counter$</code> (interval observable) into a signal using
+                        <code>toSignal()</code>.
+                        Now we can read it synchronously in template: <code>counterSignal()</code>.
+                    </p>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Counter from Signal</div>
+                        <div class="big-number">{{ counterSignal() }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo B -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">Demo B: Signal → Observable (toObservable)</h5>
+                        <span class="badge bg-success">toObservable</span>
+                    </div>
+
+                    <p class="text-muted">
+                        We convert a signal (<code>searchTerm</code>) to an observable and run RxJS operators like
+                        <code>switchMap</code> to simulate a search API.
+                    </p>
+
+                    <label class="form-label fw-semibold">Search term (signal)</label>
+                    <input class="form-control mb-2" [value]="searchTerm()"
+                        (input)="setSearchTerm($any($event.target).value)" placeholder="Type: ang, angu, angular..." />
+
+                    <div class="mini-card">
+                        <div class="mini-title">Result</div>
+                        <div class="text-muted mb-1">
+                            Status: <strong>{{ status() }}</strong>
+                        </div>
+                        <code>{{ searchResult() }}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snippets -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) toSignal()</div>
+                <pre class="code-box mb-0"><code [textContent]="toSignalSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) toObservable()</div>
+                <pre class="code-box mb-0"><code [textContent]="toObservableSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) Rule of thumb</div>
+                <pre class="code-box mb-0"><code [textContent]="ruleOfThumbSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>toSignal()</code> is perfect for showing Observable data as signal state.</li>
+                <li><code>toObservable()</code> is useful when you want RxJS operators on signal changes.</li>
+                <li>Use RxJS for async streams, use Signals for state.</li>
+            </ul>
+        </div>
+    </div>
+</div>

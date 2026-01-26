@@ -1,0 +1,51 @@
+<section class="wrap">
+    <header class="top">
+        <a routerLink="/home" class="back">← Back to Home</a>
+
+        <div class="titleRow">
+            <h1>{{ pack().title }}</h1>
+            <div class="actions">
+                <button class="btn" (click)="collapseAll()">Collapse</button>
+            </div>
+        </div>
+
+        <p class="intro">{{ pack().intro }}</p>
+
+        <div class="searchRow" *ngIf="pack().questions.length">
+            <input class="search" type="text" [value]="search()" (input)="search.set(($any($event.target).value || ''))"
+                placeholder="Search questions..." />
+            <span class="count">{{ filteredQuestions().length }} items</span>
+        </div>
+    </header>
+
+    <div class="qa" *ngIf="filteredQuestions().length; else empty">
+        <article class="card" *ngFor="let item of filteredQuestions(); let i = index">
+            <button class="q" (click)="toggle(i)">
+                <span>Q{{ i + 1 }}. {{ item.q }}</span>
+                <span class="chev">{{ openedIndex() === i ? '−' : '+' }}</span>
+            </button>
+
+            <div class="a" *ngIf="openedIndex() === i">
+                <p class="short" *ngIf="item.short">
+                    <b>Quick:</b> {{ item.short }}
+                </p>
+
+                <pre class="text">{{ item.answer }}</pre>
+
+                <div *ngIf="item.code">
+                    <h4>Code</h4>
+                    <pre class="code"><code>{{ item.code }}</code></pre>
+                </div>
+
+                <div *ngIf="item.example">
+                    <h4>Example</h4>
+                    <pre class="code"><code>{{ item.example }}</code></pre>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <ng-template #empty>
+        <p class="empty">No questions found for this topic.</p>
+    </ng-template>
+</section>

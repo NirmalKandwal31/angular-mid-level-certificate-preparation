@@ -1,0 +1,101 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">HashLocationStrategy</h3>
+            <p class="text-muted mb-0">
+                /#/route style • Useful for static hosting
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is HashLocationStrategy?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Key Points -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Points</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- URL Comparison -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100 border-clean">
+                <div class="card-body">
+                    <h5 class="mb-2">Default Routing (Clean URLs)</h5>
+                    <p class="text-muted">
+                        This is the default Angular router behavior (history API). Needs server rewrite support.
+                    </p>
+                    <pre class="code-box mb-0"><code [textContent]="normalUrlSnippet"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100 border-hash">
+                <div class="card-body">
+                    <h5 class="mb-2">Hash Routing (/#/route)</h5>
+                    <p class="text-muted">
+                        The server never sees anything after <code>#</code>, so refresh won’t break on static hosting.
+                    </p>
+                    <pre class="code-box mb-0"><code [textContent]="hashUrlSnippet"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- When useful -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">When is it Useful?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let w of whenUseful">{{ w }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- How to enable -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">How to Enable HashLocationStrategy</h5>
+            <p class="text-muted">
+                In modern Angular (standalone), enable it using <code>withHashLocation()</code> in
+                <code>provideRouter</code>.
+            </p>
+            <pre class="code-box mb-0"><code [textContent]="enableSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Why it works -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Why it Works on Static Hosting</h5>
+            <pre class="code-box mb-0"><code [textContent]="whySnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Tradeoffs -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Trade-offs</h5>
+            <ul class="text-muted mb-2">
+                <li *ngFor="let t of tradeoffs">{{ t }}</li>
+            </ul>
+
+            <div class="alert alert-info mb-0">
+                {{ tip }}
+            </div>
+        </div>
+    </div>
+</div>

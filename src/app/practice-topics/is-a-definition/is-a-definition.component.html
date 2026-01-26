@@ -1,0 +1,64 @@
+<div class="page">
+    <header class="header">
+        <h1>IS-A Definitions (Angular)</h1>
+        <p>
+            Simple definitions, types, and examples — Angular perspective.
+        </p>
+    </header>
+
+    <section class="list">
+        <article class="item" *ngFor="let it of items(); let i = index; trackBy: trackByIndex"
+            [class.item--open]="isOpen(i)">
+            <button class="item__head" type="button" (click)="toggle(i)">
+                <div class="item__title">
+                    <h2>{{ it.term }}</h2>
+                    <span class="badge">{{ isOpen(i) ? 'open' : 'tap' }}</span>
+                </div>
+                <span class="chev" [class.chev--open]="isOpen(i)">⌄</span>
+            </button>
+
+            <div class="item__body" *ngIf="isOpen(i)">
+                <!-- Definition -->
+                <div class="block">
+                    <h3>Definition</h3>
+                    <ul>
+                        <li *ngFor="let line of it.definition">{{ line }}</li>
+                    </ul>
+                </div>
+
+                <!-- Types -->
+                <div class="block" *ngIf="it.types?.length">
+                    <h3>Types</h3>
+                    <div class="chips">
+                        <span class="chip" *ngFor="let t of it.types">{{ t }}</span>
+                    </div>
+                </div>
+
+                <!-- Example -->
+                <div class="block" *ngIf="it.example?.length">
+                    <h3>Examples</h3>
+
+                    <div class="code" *ngFor="let ex of it.example">
+                        <div class="code__top">
+                            <span class="code__label">{{ ex.label || 'Example' }}</span>
+                            <span class="code__lang">{{ ex.lang || 'code' }}</span>
+                        </div>
+                        <pre><code>{{ ex.code }}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="block" *ngIf="it.notes?.length">
+                    <h3>Notes</h3>
+                    <ul>
+                        <li *ngFor="let n of it.notes">{{ n }}</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer class="footer">
+        <span>Made for quick revision + interviews</span>
+    </footer>
+</div>

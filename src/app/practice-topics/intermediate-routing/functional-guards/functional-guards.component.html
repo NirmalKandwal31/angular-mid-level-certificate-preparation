@@ -1,0 +1,110 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Functional Router Guards</h3>
+            <p class="text-muted mb-0">CanActivateFn • inject() usage • clean guards</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Functional Guards?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Key points -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Points</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">How CanActivateFn Works</h5>
+            <ol class="text-muted mb-0">
+                <li *ngFor="let s of howItWorks">{{ s }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo (Simulating a Guard Check)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                A guard usually checks authentication/authorization before allowing route navigation.
+                Here we simulate the same decision.
+            </p>
+
+            <div class="demo-box">
+                <div class="d-flex gap-2 flex-wrap mb-2">
+                    <button type="button" class="btn btn-outline-success" (click)="login()">
+                        Login
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="logout()">
+                        Logout
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" (click)="simulateGuardCheck()">
+                        Simulate Guard Check
+                    </button>
+                </div>
+
+                <div class="alert alert-info mb-2">
+                    {{ demoMessage }}
+                </div>
+
+                <div class="alert alert-warning mb-0" *ngIf="protectedNavigationResult">
+                    {{ protectedNavigationResult }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) CanActivateFn guard using inject()</div>
+                <pre class="code-box mb-0"><code [textContent]="guardSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) Using the guard in routes</div>
+                <pre class="code-box mb-0"><code [textContent]="routeSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) Old class-based guard (comparison)</div>
+                <pre class="code-box mb-0"><code [textContent]="classGuardSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>CanActivateFn</code> is a function guard for route protection.</li>
+                <li><code>inject()</code> gives services inside the guard without constructor.</li>
+                <li>Functional guards reduce boilerplate and are easier to maintain.</li>
+                <li>Return <code>true</code> to allow, or <code>UrlTree</code> to redirect.</li>
+            </ul>
+        </div>
+    </div>
+</div>

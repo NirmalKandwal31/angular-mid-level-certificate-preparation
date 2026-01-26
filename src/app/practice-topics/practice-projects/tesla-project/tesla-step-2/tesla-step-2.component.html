@@ -1,0 +1,30 @@
+<h1>Step 2 : Select your configuration and options</h1>
+<select (change)="selectedConfigurationEvent($event)" [value]="(selectedConfiguration()?.id ?? '') + ''">
+    <option value="">Choose..</option>
+
+    <option *ngFor="let configuration of allConfiguartions()" [value]="configuration.id + ''">
+        {{ configuration.description }}
+    </option>
+</select>
+
+
+<div *ngIf="towAvailable()">
+    <label>
+        <input type="checkbox" [checked]="towSelected()" (change)="towSelectedEvent($event)" />
+        Tow Hitch Package (+$1000)
+    </label>
+</div>
+
+<div *ngIf="yokeAvailable()">
+    <label>
+        <input type="checkbox" [checked]="yokeSelected()" (change)="yokeSelectedEvent($event)" />
+        Yoke Steering Wheel (+$1000)
+    </label>
+</div>
+
+
+<div *ngIf="selectedConfiguration() as cfg">
+    <p>Range: {{ cfg.range }}</p>
+    <p>Max Speed: {{ cfg.speed }}</p>
+    <p>Price: ${{ cfg.price }}</p>
+</div>

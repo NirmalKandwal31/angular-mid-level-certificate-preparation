@@ -1,0 +1,188 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Custom Pipes</h3>
+            <p class="text-muted mb-0">
+                Pipe decorator, transform(), and pure vs impure pipes (with live demo).
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- What is a Custom Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is a Custom Pipe?</h5>
+            <p class="text-muted mb-0">
+                A custom pipe is a reusable formatter that transforms values in templates.
+                You define it using the <code>Pipe</code> decorator and implement
+                <code>PipeTransform</code> with a <code>transform()</code> method.
+            </p>
+        </div>
+    </div>
+
+    <!-- Pipe decorator -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Pipe Decorator</h5>
+            <p class="text-muted">
+                The <code>Pipe</code> decorator registers your class as a pipe.
+                The <code>name</code> is what you use in templates.
+            </p>
+            <pre class="code-box mb-0"><code>{{ pipeDecoratorCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- transform() -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">transform() Method</h5>
+            <p class="text-muted">
+                <code>transform(value, ...args)</code> receives the value from the template
+                and returns a transformed value.
+            </p>
+
+            <pre class="code-box mb-2"><code>{{ transformCode }}</code></pre>
+            <pre class="code-box mb-0"><code>{{ usageCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Highlight Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo: Highlight Pipe</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                Type a search word. The pipe highlights matches inside the paragraph.
+            </p>
+
+            <div class="demo-box mb-2">
+                <label class="form-label fw-semibold mb-1">Search text</label>
+                <input class="form-control" [(ngModel)]="searchText" placeholder="e.g. ang" />
+            </div>
+
+            <div class="output-box">
+                <div class="mini-title">Output</div>
+                <div class="result" [innerHTML]="paragraph | highlight:searchText"></div>
+            </div>
+
+            <div class="fw-semibold mt-3 mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ highlightUsageCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Pure vs Impure Explanation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Pure vs Impure Pipes</h5>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="mini-card ok">
+                        <div class="mini-title">Pure Pipes (recommended)</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let p of purePoints">{{ p }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="mini-card warn">
+                        <div class="mini-title">Impure Pipes (use carefully)</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let p of impurePoints">{{ p }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fw-semibold mt-3 mb-2">Pure vs Impure (code)</div>
+            <pre class="code-box mb-0"><code>{{ pureImpureCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- ✅ Pure vs Impure Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Pure vs Impure (Live Demo)</h5>
+                <span class="badge bg-primary">Important</span>
+            </div>
+
+            <p class="text-muted mb-3">
+                Click the buttons and watch the output + run counters.
+                <strong>Pure pipe</strong> won’t rerun on array mutation (same reference),
+                while <strong>impure pipe</strong> reruns on every change detection.
+            </p>
+
+            <div class="demo-actions mb-3">
+                <button class="btn btn-outline-danger" (click)="pushNameMutate()">
+                    Push (Mutate Array)
+                </button>
+
+                <button class="btn btn-outline-success" (click)="replaceArrayNewRef()">
+                    Replace Array (New Reference)
+                </button>
+
+                <button class="btn btn-outline-secondary" (click)="resetDemo()">
+                    Reset Demo
+                </button>
+            </div>
+
+            <div class="output-grid">
+                <div class="mini-card">
+                    <div class="mini-title">Current Array</div>
+                    <div class="result">{{ names | json }}</div>
+                </div>
+
+                <div class="mini-card ok">
+                    <div class="mini-title">Pure Pipe Output</div>
+                    <div class="result">{{ names | joinNamesPure }}</div>
+                    <div class="counter">Runs: <strong>{{ pureRuns }}</strong></div>
+                    <div class="hint">Updates only when array reference changes.</div>
+                </div>
+
+                <div class="mini-card warn">
+                    <div class="mini-title">Impure Pipe Output</div>
+                    <div class="result">{{ names | joinNamesImpure }}</div>
+                    <div class="counter">Runs: <strong>{{ impureRuns }}</strong></div>
+                    <div class="hint">Runs on every change detection (can be expensive).</div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <div class="fw-semibold mb-2">Key Observation</div>
+                <ul class="text-muted mb-0">
+                    <li>
+                        <strong>Push (Mutate)</strong> keeps the same array reference →
+                        pure pipe may not update.
+                    </li>
+                    <li>
+                        <strong>Replace Array</strong> creates a new reference →
+                        pure pipe updates.
+                    </li>
+                    <li>
+                        Impure pipe updates even on mutation — but runs more often.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>Pipe</code> registers your pipe and gives it a template name.</li>
+                <li><code>transform()</code> implements the transformation logic.</li>
+                <li>Use <strong>pure pipes</strong> by default (best performance).</li>
+                <li>Use <strong>impure pipes</strong> only when required.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="card child-box">
+    <div class="card-body">
+        <h6 class="section-title">Child Component</h6>
+
+        <p class="text-muted">
+            Receives data using <code>Input()</code> and sends data back using
+            <code>Output()</code>.
+        </p>
+
+        <div class="flow-box mb-3">
+            <strong>Data received from Parent (Input):</strong>
+            <p class="value-text">{{ inputDataFromChild }}</p>
+        </div>
+
+        <button class="btn btn-primary" (click)="sendDataToParent()">
+            Emit Event to Parent (Output)
+        </button>
+    </div>
+</div>

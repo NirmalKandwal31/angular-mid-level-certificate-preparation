@@ -1,0 +1,106 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">When to Use Pipes</h3>
+            <p class="text-muted mb-0">
+                Pipes are for formatting view data — avoid heavy logic in templates.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Pipes best for?</h5>
+            <p class="text-muted mb-0">
+                Pipes are ideal for <strong>display formatting</strong> — transforming values
+                right before showing them in the UI (date, currency, percent, case changes).
+            </p>
+        </div>
+    </div>
+
+    <!-- Good Use Cases -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Good Use Cases</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let g of goodUseCases">{{ g }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Formatting Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Example: Formatting View Data</h5>
+
+            <div class="example-box mb-3">
+                <div><strong>Order Date:</strong> {{ order.createdAt | date:'medium' }}</div>
+                <div><strong>Amount:</strong> {{ order.amount | currency:'USD':'symbol':'1.2-2' }}</div>
+                <div><strong>Discount:</strong> {{ order.discount | percent }}</div>
+                <hr class="my-2" />
+                <div>
+                    <strong>Debug (json pipe):</strong>
+                    <pre class="json-box mb-0">{{ user | json }}</pre>
+                </div>
+            </div>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ formattingSnippet }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Avoid Heavy Logic -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Avoid Heavy Logic in Template</h5>
+            <p class="text-muted">
+                Templates run during change detection. Expensive work inside templates
+                (heavy filters, sorts, complex calculations) can slow down your UI.
+            </p>
+
+            <ul class="text-muted mb-2">
+                <li *ngFor="let a of avoidUseCases">{{ a }}</li>
+            </ul>
+
+            <div class="fw-semibold mb-2">Bad Example (avoid)</div>
+            <pre class="code-box mb-0"><code>{{ avoidHeavySnippet }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Better Approach -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Better Approach</h5>
+            <p class="text-muted">
+                Do complex transformations in the component/service and keep templates simple.
+            </p>
+
+            <pre class="code-box mb-0"><code>{{ betterApproachSnippet }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Best Practices</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let b of bestPractices">{{ b }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li>Use pipes mainly for <strong>formatting view data</strong>.</li>
+                <li>Avoid heavy logic inside templates to keep performance good.</li>
+                <li>Move complex transformations to TS (component/service).</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Standalone Components</h3>
+            <p class="text-muted mb-0">
+                standalone: true • imports array • No NgModule needed for feature
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Standalone Components?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Key points -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Points</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- What replaces NgModule -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">Why NgModule is not needed (for feature pages)</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of whyNoNgModule">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">Common imports used in standalone components</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of commonImports">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple demo section -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Small Demo (What standalone gives you)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                This is just a reminder: standalone components can use common directives like
+                <code>*ngFor</code> by importing <code>CommonModule</code>.
+            </p>
+
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of demoList">
+                    {{ item }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Code snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) Basic standalone component</div>
+                <pre class="code-box mb-0"><code [textContent]="standaloneSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) imports array (replaces NgModule imports)</div>
+                <pre class="code-box mb-0"><code [textContent]="importsSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) No NgModule needed + lazy loading with loadComponent</div>
+                <pre class="code-box mb-0"><code [textContent]="noNgModuleSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">4) Old module way (for comparison)</div>
+                <pre class="code-box mb-0"><code [textContent]="migrationSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>standalone: true</code> means no NgModule declaration needed.</li>
+                <li><code>imports: []</code> contains everything used by the template.</li>
+                <li>Feature pages become simpler and easier to manage.</li>
+                <li>Lazy loading is straightforward with <code>loadComponent</code>.</li>
+            </ul>
+        </div>
+    </div>
+</div>

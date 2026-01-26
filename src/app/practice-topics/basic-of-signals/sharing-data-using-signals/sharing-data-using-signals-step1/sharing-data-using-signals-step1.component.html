@@ -1,0 +1,68 @@
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+            <div>
+                <h5 class="mb-1">Sharing Data Using Signals — Step 1</h5>
+                <p class="text-muted mb-0">
+                    Create local signal → compute filtered data → update shared service signal
+                </p>
+            </div>
+            <span class="badge bg-primary">Step 1</span>
+        </div>
+
+        <p class="text-muted">{{ info }}</p>
+
+        <div class="mini">
+            <div class="mini-title">Flow (what happens)</div>
+            <ol class="text-muted mb-0">
+                <li *ngFor="let p of flowPoints">{{ p }}</li>
+            </ol>
+        </div>
+
+        <hr />
+
+        <div class="d-flex gap-2 flex-wrap mb-3">
+            <button class="btn btn-outline-primary btn-sm" (click)="addUser()">
+                Add User
+            </button>
+            <button class="btn btn-outline-success btn-sm" (click)="makeAllAdults()">
+                Make All Age = 30
+            </button>
+            <button class="btn btn-outline-danger btn-sm" (click)="reset()">
+                Reset
+            </button>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-12 col-lg-6">
+                <div class="mini">
+                    <div class="mini-title">All Users (local signal: users)</div>
+
+                    @for(u of users(); track u.id){
+                    <div class="item">
+                        <strong>{{ u.name }}</strong>
+                        <span class="muted">Age: {{ u.age }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="mini">
+                    <div class="mini-title">Filtered Users (computed: age > 25)</div>
+
+                    @for(u of filteredUsers(); track u.id){
+                    <div class="item ok">
+                        <strong>{{ u.name }}</strong>
+                        <span class="muted">Age: {{ u.age }}</span>
+                    </div>
+                    }
+
+                    @if(filteredUsers().length === 0){
+                    <p class="text-muted mb-0">No users with age > 25.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

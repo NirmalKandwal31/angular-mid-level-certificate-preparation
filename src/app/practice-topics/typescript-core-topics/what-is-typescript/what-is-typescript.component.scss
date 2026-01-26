@@ -1,0 +1,52 @@
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.snippet {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffffff;
+  height: 100%;
+}
+
+.snippet.success {
+  border-left: 4px solid #198754;
+  background: #f3faf7;
+}
+
+.snippet.danger {
+  border-left: 4px solid #dc3545;
+  background: #fff5f5;
+}
+
+.snippet-title {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}

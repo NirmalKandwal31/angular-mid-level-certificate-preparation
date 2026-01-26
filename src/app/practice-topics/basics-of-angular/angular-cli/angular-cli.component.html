@@ -1,0 +1,38 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Angular CLI</h3>
+            <p class="text-muted mb-0">
+                Common CLI commands with meanings and examples.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-lg-6" *ngFor="let cmd of commands">
+            <div class="card h-100 shadow-sm cli-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">{{ cmd.title }}</h5>
+                        <span class="badge bg-primary">CLI</span>
+                    </div>
+
+                    <div class="code-pill mb-3">
+                        <code>{{ cmd.command }}</code>
+                    </div>
+
+                    <p class="text-muted mb-3">{{ cmd.meaning }}</p>
+
+                    <div class="mb-2 fw-semibold">Example</div>
+                    <pre class="code-box mb-3"><code>{{ cmd.example }}</code></pre>
+
+                    <ul class="small text-muted mb-0" *ngIf="cmd.notes?.length">
+                        <li *ngFor="let n of cmd.notes">{{ n }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

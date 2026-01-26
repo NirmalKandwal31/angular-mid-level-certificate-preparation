@@ -1,0 +1,56 @@
+/* Basic layout helpers */
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.example-box {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.var-box {
+  border-left: 4px solid #dc3545;
+}
+
+.let-box {
+  border-left: 4px solid #198754;
+}
+
+.result-card {
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid #e9ecef;
+}
+
+.var-card {
+  border-left: 4px solid #dc3545;
+  background: #fff5f5;
+}
+
+.let-card {
+  border-left: 4px solid #198754;
+  background: #f3faf7;
+}
+
+.result-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0 12px;
+
+  li {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+}

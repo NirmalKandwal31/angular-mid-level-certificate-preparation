@@ -1,0 +1,99 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Union Types in TypeScript</h3>
+        <p class="text-muted mb-0">
+            Union types allow a variable to hold more than one type.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is a Union Type?</h5>
+            <p class="text-muted mb-2">
+                A <strong>union type</strong> allows a variable to accept
+                multiple types using the pipe (<code>|</code>) operator.
+            </p>
+
+            <p class="text-muted mb-0">
+                This is useful when a value can logically be more than one type.
+            </p>
+
+            <pre class="code-box mt-2"><code>{{ userTypeCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Why use -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Why use Union Types?</h5>
+            <ul class="text-muted mb-0">
+                <li>To handle flexible or dynamic data (API responses).</li>
+                <li>To avoid using <code>any</code> while keeping type safety.</li>
+                <li>Commonly used with form inputs and backend values.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Example Output -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Union Type Example</h5>
+            <p class="text-muted">
+                We used a union type (<code>number | string</code>) for
+                <strong>user.age</strong>.
+                That is why TypeScript allows both numbers and strings without errors.
+            </p>
+
+            <ul class="list-box">
+                @for (user of users; track user.name) {
+                <li>
+                    <strong>Name:</strong> {{ user.name }},
+                    <strong>Age:</strong> {{ user.age }},
+                    <strong>Is Admin:</strong> {{ user.isAdmin }}
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Code usage -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>How it is used</h5>
+            <pre class="code-box"><code>{{ usageCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Type Narrowing -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Type Narrowing</h5>
+            <p class="text-muted">
+                When working with union types, TypeScript allows
+                <strong>type narrowing</strong> using conditions like
+                <code>typeof</code>.
+            </p>
+
+            <pre class="code-box"><code>{{ narrowingCode }}</code></pre>
+
+            <p class="note-text">
+                Type narrowing helps TypeScript understand which type is being used
+                at runtime.
+            </p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li>Union types use the <code>|</code> operator</li>
+                <li>They allow multiple possible data types</li>
+                <li>Safer alternative to <code>any</code></li>
+                <li>Type narrowing is essential when using union types</li>
+            </ul>
+        </div>
+    </div>
+</div>

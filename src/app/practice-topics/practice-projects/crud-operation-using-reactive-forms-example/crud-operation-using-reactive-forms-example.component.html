@@ -1,0 +1,57 @@
+<form [formGroup]="userForm">
+    <div class="form-container">
+        <h2>CRUD Operations with Reactive Forms</h2>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="userName" />
+        </div>
+        <div *ngIf="userForm.get('userName')?.invalid && userForm.get('userName')?.touched" class="error-message">
+            Name is required.
+
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" formControlName="userAge" />
+        </div>
+        <div *ngIf="userForm.get('userAge')?.invalid && userForm.get('userAge')?.touched" class="error-message">
+            Age is required.
+
+        </div>
+        <!-- Min age error -->
+        <div *ngIf="userForm.get('userAge')?.hasError('min') 
+            && userForm.get('userAge')?.touched" class="error-message">
+            Minimum age must be 18.
+        </div>
+
+        <button class="btn-primary submit-btn" (click)="addUserToTable()" [disabled]="userForm.invalid"> {{ isEditMode ?
+            'Update User' : 'Add User'
+            }}</button>
+    </div>
+</form>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>
+                <button class="btn-edit" (click)="editUser(user)">Edit</button>
+                <button class="btn-delete" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+        </tr>
+        <tr *ngIf="userList.length<1">
+            <td colspan="4">No users available. Please add a user.</td>
+        </tr>
+    </tbody>
+</table>

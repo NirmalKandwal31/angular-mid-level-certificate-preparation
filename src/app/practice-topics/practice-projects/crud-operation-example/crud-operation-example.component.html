@@ -1,0 +1,142 @@
+<div class="container py-3">
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3 flex-wrap">
+        <div>
+            <h3 class="mb-1">CRUD Operation Example (With Explanation)</h3>
+            <p class="text-muted mb-0">
+                This page shows a live CRUD demo and explains each method with code.
+            </p>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary" (click)="addNewUser()">+ Add New User</button>
+            <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+        </div>
+    </div>
+
+    <!-- Flow -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is happening in this example?</h5>
+            <ol class="text-muted mb-0">
+                <li *ngFor="let s of flowSteps">{{ s }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Last Action -->
+    <div class="alert alert-info mb-3">
+        <strong>Last action:</strong> {{ lastAction }}
+    </div>
+
+    <!-- Live Demo Table -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Users Table</h5>
+                <span class="badge bg-dark">Total: {{ users.length }}</span>
+            </div>
+
+            <div class="table-responsive" *ngIf="users.length > 0">
+                <table class="table table-bordered align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 70px;">ID</th>
+                            <th>Name</th>
+                            <th style="width: 90px;">Age</th>
+                            <th>Address</th>
+                            <th style="width: 220px;">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <td><span class="badge bg-secondary">{{ user.id }}</span></td>
+                            <td class="fw-semibold">{{ user.name }}</td>
+                            <td>{{ user.age }}</td>
+                            <td class="text-muted">{{ user.address }}</td>
+
+                            <td>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <button class="btn btn-outline-primary btn-sm" (click)="editUser(user)">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm" (click)="deleteUser(user.id)">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note mt-3">
+                    <strong>Edit button:</strong> For simplicity we only append <code>(Edited)</code> to the name.
+                    In real apps you open a form to edit name/age/address.
+                </div>
+            </div>
+
+            <div *ngIf="users.length === 0" class="empty-state">
+                <div class="empty-title">No users found</div>
+                <p class="text-muted mb-2">Click “Add New User” to create a record.</p>
+                <button class="btn btn-primary" (click)="addNewUser()">+ Add New User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Method Explanation Table -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Method Explanation (Service)</h5>
+            <p class="text-muted">
+                These are the methods inside the service and what each one does.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Method</th>
+                            <th>Purpose</th>
+                            <th>When used</th>
+                            <th>Input</th>
+                            <th>Output</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let m of methodDocs">
+                            <td><code>{{ m.name }}</code></td>
+                            <td class="text-muted">{{ m.purpose }}</td>
+                            <td class="text-muted">{{ m.whenUsed }}</td>
+                            <td class="text-muted">{{ m.input }}</td>
+                            <td class="text-muted">{{ m.output }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) Component (TS)</div>
+                <pre class="code-box mb-0"><code [textContent]="componentTsSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) Template (HTML)</div>
+                <pre class="code-box mb-0"><code [textContent]="templateSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) Service (TS)</div>
+                <pre class="code-box mb-0"><code [textContent]="serviceSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Inject a Service into a Component</h3>
+            <p class="text-muted mb-0">
+                constructor(private svc) • inject(Svc) in standalone components
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of points">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Constructor Injection -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="mb-0">1️⃣ Constructor Injection (Classic Way)</h5>
+                <span class="badge bg-primary">Most Common</span>
+            </div>
+
+            <p class="text-muted">
+                Angular automatically creates the service and passes it into the constructor.
+                This is the most widely used and recommended approach.
+            </p>
+
+            <pre class="code-box mb-0">
+<code [textContent]="constructorSnippet"></code>
+      </pre>
+
+            <div class="demo-box mt-3">
+                <div class="fw-semibold mb-1">Live Demo (Constructor Injection)</div>
+
+                <p>
+                    Counter value:
+                    <strong>{{ counterSvc.getCount() }}</strong>
+                </p>
+
+                <button class="btn btn-outline-primary" (click)="incrementUsingConstructor()">
+                    Increment (constructor)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- inject() Function -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="mb-0">2️⃣ inject() Function (Standalone Way)</h5>
+                <span class="badge bg-success">New & Modern</span>
+            </div>
+
+            <p class="text-muted">
+                The <code>inject()</code> function lets you inject services
+                without using the constructor. This is very useful in
+                <strong>standalone components</strong> and functional APIs.
+            </p>
+
+            <pre class="code-box mb-0">
+<code [textContent]="injectSnippet"></code>
+      </pre>
+
+            <div class="demo-box mt-3">
+                <div class="fw-semibold mb-1">Live Demo (inject())</div>
+
+                <p>
+                    Counter value:
+                    <strong>{{ counterSvcUsingInject.getCount() }}</strong>
+                </p>
+
+                <button class="btn btn-outline-success" (click)="incrementUsingInject()">
+                    Increment (inject)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Same Instance -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Important Observation</h5>
+
+            <p class="text-muted">
+                Both buttons above update the <strong>same counter value</strong>.
+                That proves both injection methods return the same singleton service
+                instance (because it is provided in <code>root</code>).
+            </p>
+
+            <button class="btn btn-outline-danger" (click)="reset()">Reset Counter</button>
+        </div>
+    </div>
+
+    <!-- When to use -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">When to Use Which?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let w of whenToUse">{{ w }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

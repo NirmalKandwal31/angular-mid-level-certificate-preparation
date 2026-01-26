@@ -1,0 +1,156 @@
+/* ================================
+   FORM CONTAINER
+================================ */
+.form-container {
+  max-width: 420px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #333;
+}
+
+/* ================================
+   FORM FIELDS
+================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #444;
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+/* ================================
+   SUBMIT BUTTON
+================================ */
+.submit-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ================================
+   DATA TABLE
+================================ */
+.data-table {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 14px;
+}
+
+.data-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* "No data" row */
+.data-table td[colspan] {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #666;
+}
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #000;
+  transition: 0.2s;
+}
+
+.btn-edit:hover {
+  background-color: #d39e00;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #b02a37;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+  .data-table {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 95%;
+  }
+}

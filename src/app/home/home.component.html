@@ -1,0 +1,64 @@
+<div #pageTop class="container py-3">
+    <h3 class="mb-1">Angular Mid-Level Developer Preparation Hub</h3>
+    <p class="text-muted mb-3">
+        Structured preparation for Angular mid-level developer interviews and certifications.
+        Select a major topic to explore sub-topics with in-depth explanations, real-world patterns,
+        and interview-focused questions.
+    </p>
+
+    <!-- Major Categories -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let cat of categories(); let i = index">
+            <div class="card h-100 category-card" [class.active]="selectedCategoryIndex() === i"
+                (click)="toggleCategory(i)">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="card-title mb-1">{{ cat.title }}</h5>
+                            <p class="card-text text-muted mb-0">{{ cat.description }}</p>
+                        </div>
+
+                        <div class="d-flex flex-column align-items-end gap-2">
+                            <span class="badge bg-primary">{{ cat.items.length }}</span>
+
+                            <!-- 👇 indicator -->
+                            <span class="open-indicator" *ngIf="selectedCategoryIndex() === i">
+                                ▼ open
+                            </span>
+                            <span class="open-indicator text-muted" *ngIf="selectedCategoryIndex() !== i">
+                                ▶
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub Topics -->
+    <div #subTopicsSection class="subtopics-wrap" *ngIf="selectedCategoryIndex() !== null">
+        <div class="subtopics-header">
+            <h5 class="mb-0">
+                {{ categories()[selectedCategoryIndex()!].title }} — Sub Topics
+            </h5>
+            <button class="btn btn-sm btn-outline-secondary" (click)="selectedCategoryIndex.set(null)">
+                Close
+            </button>
+        </div>
+
+        <div class="row g-3 mt-1">
+            <div class="col-12 col-md-6 col-lg-4" *ngFor="let t of categories()[selectedCategoryIndex()!].items">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="card-title">{{ t.title }}</h6>
+                        <p class="card-text text-muted flex-grow-1">{{ t.description }}</p>
+
+                        <button class="btn btn-primary w-100" (click)="$event.stopPropagation(); navigateTo(t.route)">
+                            Go To
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

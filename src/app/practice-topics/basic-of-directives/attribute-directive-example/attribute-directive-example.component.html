@@ -1,0 +1,78 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Attribute Directives</h3>
+        <p class="text-muted mb-0">
+            Learn how <code>ngStyle</code> and <code>ngClass</code> dynamically change
+            the appearance of elements.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What are Attribute Directives?</h5>
+            <p class="text-muted mb-0">
+                Attribute directives change the <strong>appearance or behavior</strong>
+                of an existing DOM element without changing the DOM structure.
+            </p>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Live Example</h5>
+
+            <button class="btn btn-outline-primary mb-3" (click)="toggleRole()">
+                Toggle Role (Current: {{ isAdmin ? 'Admin' : 'User' }})
+            </button>
+
+            <p [ngStyle]="{ color: isAdmin ? 'green' : 'orange' }" class="demo-text">
+                Text color changes using <strong>ngStyle</strong>
+            </p>
+
+            <p [ngClass]="{ 'admin-class': isAdmin, 'user-class': !isAdmin }" class="demo-text">
+                Text style changes using <strong>ngClass</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- ngStyle -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>ngStyle</h5>
+            <p class="text-muted">
+                <code>ngStyle</code> allows you to set multiple inline styles dynamically
+                using an object.
+            </p>
+
+            <pre class="code-box"><code>{{ ngStyleCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- ngClass -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>ngClass</h5>
+            <p class="text-muted">
+                <code>ngClass</code> allows you to add or remove CSS classes dynamically
+                based on conditions.
+            </p>
+
+            <pre class="code-box"><code>{{ ngClassCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Differences</h5>
+            <ul class="text-muted mb-0">
+                <li><strong>ngStyle</strong> → modifies inline styles</li>
+                <li><strong>ngClass</strong> → adds/removes CSS classes</li>
+                <li>Both are attribute directives</li>
+                <li>They do not add or remove DOM elements</li>
+            </ul>
+        </div>
+    </div>
+</div>

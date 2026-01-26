@@ -1,0 +1,136 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">FormControl in Angular</h3>
+            <p class="text-muted mb-0">new FormControl(), setValue/patchValue, valueChanges</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is FormControl?</h5>
+            <p class="text-muted mb-0">
+                <strong>FormControl</strong> represents a single input field in
+                <strong>Reactive Forms</strong>. It tracks the field value, validation state,
+                and user interaction state.
+            </p>
+        </div>
+    </div>
+
+    <!-- Create FormControl -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Creating a FormControl</h5>
+
+            <pre class="code-box mb-2"><code [textContent]="codeCreate"></code></pre>
+
+            <input class="form-control" [formControl]="nameControl" placeholder="Type your name" />
+
+            <div class="helper mt-2">
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <span class="fw-semibold">Current Value:</span>
+                    <code>{{ nameControl.value }}</code>
+                </div>
+            </div>
+
+            <div class="mt-2 text-muted small">
+                This input is directly connected to the FormControl using <code>[formControl]</code>.
+            </div>
+
+            <pre class="code-box mt-2 mb-0"><code [textContent]="codeUsage"></code></pre>
+        </div>
+    </div>
+
+    <!-- setValue vs patchValue -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">setValue vs patchValue</h5>
+
+            <p class="text-muted">
+                <code>setValue</code> is strict (mainly matters for FormGroup), while
+                <code>patchValue</code> is flexible for partial updates.
+                For a single FormControl, both will update the value.
+            </p>
+
+            <div class="d-flex gap-2 flex-wrap mb-3">
+                <button type="button" class="btn btn-outline-primary" (click)="setNameUsingSetValue()">
+                    setValue('John Doe')
+                </button>
+
+                <button type="button" class="btn btn-outline-success" (click)="setNameUsingPatchValue()">
+                    patchValue('Alex')
+                </button>
+
+                <button type="button" class="btn btn-outline-secondary" (click)="resetControl()">
+                    Reset
+                </button>
+            </div>
+
+            <table class="table table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 180px;">Method</th>
+                        <th>Behavior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>setValue()</code></td>
+                        <td>
+                            Strict for complex forms (FormGroup). Requires full structure match.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>patchValue()</code></td>
+                        <td>
+                            Allows partial updates (very useful in FormGroup).
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- valueChanges -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">valueChanges</h5>
+
+            <p class="text-muted">
+                <code>valueChanges</code> is an Observable that emits whenever the control value changes.
+                Useful for live search, auto-save, dynamic validation messages, etc.
+            </p>
+
+            <!-- ✅ Important: use textContent so { } doesn't break template -->
+            <pre class="code-box mb-3"><code [textContent]="codeValueChanges"></code></pre>
+
+            <div class="helper">
+                <div class="fw-semibold mb-2">Typed Values (Live)</div>
+
+                <div *ngIf="nameChanges.length === 0" class="text-muted">
+                    Start typing above to see emitted values here.
+                </div>
+
+                <ul *ngIf="nameChanges.length > 0" class="mb-0">
+                    <li *ngFor="let v of nameChanges">{{ v }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>FormControl</code> manages a single reactive form field.</li>
+                <li><code>setValue</code> is strict for FormGroup.</li>
+                <li><code>patchValue</code> supports partial updates.</li>
+                <li><code>valueChanges</code> emits on every value change.</li>
+            </ul>
+        </div>
+    </div>
+</div>

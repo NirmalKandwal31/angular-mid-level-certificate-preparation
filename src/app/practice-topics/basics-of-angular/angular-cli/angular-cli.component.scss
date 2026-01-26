@@ -1,0 +1,24 @@
+.cli-card {
+  border-radius: 12px;
+}
+
+.code-pill {
+  background: #f6f8fa;
+  border: 1px solid #e9ecef;
+  padding: 10px 12px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    color: inherit;
+  }
+}

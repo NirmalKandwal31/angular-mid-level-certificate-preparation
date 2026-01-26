@@ -1,0 +1,111 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Angular vs AngularJS</h3>
+            <p class="text-muted mb-0">
+                Angular (2+) is a modern rewrite of AngularJS (1.x). Below is a clear,
+                practical comparison.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Summary Chips -->
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        <span class="badge rounded-pill bg-primary chip" *ngFor="let chip of summaryChips">
+            {{ chip }}
+        </span>
+    </div>
+
+    <!-- Side-by-side highlight cards -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 shadow-sm highlight-card highlight-angular">
+                <div class="card-body">
+                    <h5 class="mb-2">Angular (2+)</h5>
+                    <p class="text-muted mb-0">
+                        Component-based, TypeScript-first framework with strong tooling and
+                        modern architecture for scalable applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 shadow-sm highlight-card highlight-angularjs">
+                <div class="card-body">
+                    <h5 class="mb-2">AngularJS (1.x)</h5>
+                    <p class="text-muted mb-0">
+                        Legacy framework based on controllers and $scope with digest cycle
+                        watchers. Typically maintained in older apps.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Detailed Comparison</h5>
+                <span class="text-muted small">Aspect-by-aspect differences</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle comparison-table mb-0">
+                    <thead>
+                        <tr>
+                            <th style="width: 22%">Aspect</th>
+                            <th style="width: 39%">Angular (2+)</th>
+                            <th style="width: 39%">AngularJS (1.x)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of differences">
+                            <td class="fw-semibold">{{ row.aspect }}</td>
+                            <td>{{ row.angular }}</td>
+                            <td>{{ row.angularjs }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- When to choose -->
+    <div class="row g-3">
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="mb-2">When to Choose Angular (2+)</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let x of whenToChooseAngular">{{ x }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="mb-2">Where You May Still See AngularJS</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let x of whenYouMaySeeAngularJS">{{ x }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Takeaways -->
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h5 class="mb-2">Quick Takeaways</h5>
+                <ul class="mb-0 text-muted">
+                    <li *ngFor="let t of quickTakeaways">{{ t }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

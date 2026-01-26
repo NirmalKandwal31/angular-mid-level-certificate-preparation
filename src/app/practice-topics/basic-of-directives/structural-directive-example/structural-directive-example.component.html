@@ -1,0 +1,102 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Structural Directives</h3>
+        <p class="text-muted mb-0">
+            Learn how <code>*ngFor</code>, <code>*ngIf</code>, and <code>ng-container</code>
+            change the DOM structure dynamically.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Structural Directives?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of definitionPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ngFor Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">1) *ngFor Example</h5>
+                <span class="badge bg-primary">ngFor</span>
+            </div>
+
+            <p class="text-muted">
+                <code>*ngFor</code> repeats an element for each item in an array.
+            </p>
+
+            <ul class="list-box mb-3">
+                <li *ngFor="let u of users">
+                    <span class="pill">{{ u.name }}</span>
+                    <span class="muted">Age: {{ u.age }}</span>
+                </li>
+            </ul>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ ngForCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- ngIf Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">2) *ngIf Example</h5>
+                <span class="badge bg-primary">ngIf</span>
+            </div>
+
+            <p class="text-muted">
+                <code>*ngIf</code> adds or removes elements based on a condition.
+            </p>
+
+            <div class="demo-box mb-3">
+                <ng-container *ngFor="let u of users">
+                    <p *ngIf="u.age >= 25" class="alert alert-success mb-2">
+                        {{ u.name }} is 25 or older.
+                    </p>
+
+                    <p *ngIf="u.age < 25" class="alert alert-warning mb-2">
+                        {{ u.name }} is younger than 25.
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ ngIfCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- ng-container -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">3) Why use ng-container?</h5>
+                <span class="badge bg-primary">ng-container</span>
+            </div>
+
+            <p class="text-muted">
+                <code>ng-container</code> lets you apply structural directives without
+                adding an extra element to the DOM.
+            </p>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ ngContainerCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>*ngFor</code> repeats elements for arrays.</li>
+                <li><code>*ngIf</code> conditionally adds/removes elements.</li>
+                <li><code>ng-container</code> avoids extra wrapper DOM elements.</li>
+            </ul>
+        </div>
+    </div>
+</div>

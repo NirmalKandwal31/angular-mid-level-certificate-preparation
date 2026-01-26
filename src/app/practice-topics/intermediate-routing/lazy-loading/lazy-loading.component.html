@@ -1,0 +1,93 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Lazy Loading in Angular</h3>
+            <p class="text-muted mb-0">
+                loadComponent • loadChildren • improves initial load
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is Lazy Loading?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Key Points -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Points</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Eager vs Lazy -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100 border-danger">
+                <div class="card-body">
+                    <h5 class="mb-2 text-danger">Eager Loading (Not Lazy)</h5>
+                    <p class="text-muted">
+                        All code is loaded when the app starts, even if the user never visits the route.
+                    </p>
+                    <pre class="code-box mb-0"><code [textContent]="eagerSnippet"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100 border-success">
+                <div class="card-body">
+                    <h5 class="mb-2 text-success">Lazy Loading</h5>
+                    <p class="text-muted">
+                        Code is loaded only when the route is visited.
+                    </p>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let b of benefits">{{ b }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- loadComponent -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">loadComponent (Standalone Components)</h5>
+            <ul class="text-muted mb-2">
+                <li *ngFor="let p of loadComponentPoints">{{ p }}</li>
+            </ul>
+
+            <pre class="code-box mb-0"><code [textContent]="loadComponentSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- loadChildren -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">loadChildren (Route Groups / Modules)</h5>
+            <ul class="text-muted mb-2">
+                <li *ngFor="let p of loadChildrenPoints">{{ p }}</li>
+            </ul>
+
+            <pre class="code-box mb-0"><code [textContent]="loadChildrenSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Network tip -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">How to Verify Lazy Loading?</h5>
+            <p class="text-muted mb-0">
+                {{ networkNote }}
+            </p>
+        </div>
+    </div>
+</div>

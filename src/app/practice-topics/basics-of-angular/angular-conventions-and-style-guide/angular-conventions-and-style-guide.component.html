@@ -1,0 +1,75 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Angular Conventions & Style Guide</h3>
+            <p class="text-muted mb-0">
+                Practical conventions that keep Angular projects consistent, readable, and scalable.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Principles -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let p of topPrinciples">
+            <div class="card h-100 shadow-sm principle-card">
+                <div class="card-body">
+                    <h6 class="mb-2">{{ p.title }}</h6>
+                    <p class="text-muted mb-0 small">{{ p.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sections -->
+    <div class="card shadow-sm mb-3" *ngFor="let s of sections">
+        <div class="card-body">
+            <div class="d-flex align-items-start justify-content-between gap-2 flex-wrap mb-2">
+                <div>
+                    <h5 class="mb-1">{{ s.heading }}</h5>
+                    <p class="text-muted mb-0">{{ s.description }}</p>
+                </div>
+                <span class="badge bg-primary">Guidelines</span>
+            </div>
+
+            <div class="row g-3 mt-1">
+                <div class="col-12 col-lg-6" *ngFor="let r of s.rules">
+                    <div class="rule-box">
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <h6 class="mb-1">{{ r.title }}</h6>
+                            <span class="badge bg-light text-dark border">Rule</span>
+                        </div>
+
+                        <p class="text-muted mb-2"><strong>Why:</strong> {{ r.why }}</p>
+
+                        <div class="mb-2">
+                            <div class="label-good">Good</div>
+                            <pre class="code-box code-good"><code>{{ r.good }}</code></pre>
+                        </div>
+
+                        <div class="mb-0" *ngIf="r.avoid">
+                            <div class="label-avoid">Avoid</div>
+                            <pre class="code-box code-avoid"><code>{{ r.avoid }}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Quick Checklist</h5>
+            <div class="row g-2">
+                <div class="col-12 col-md-6 col-lg-3" *ngFor="let c of checklist">
+                    <div class="check-item">
+                        <span class="check-dot"></span>
+                        <span>{{ c }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">NgModule Decorator Properties</h3>
+            <p class="text-muted mb-0">
+                Understanding <code>declarations</code>, <code>imports</code>,
+                <code>providers</code>, and <code>bootstrap</code>.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is an NgModule?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let x of intro">{{ x }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Big Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Complete Example</h5>
+                <span class="badge bg-primary">AppModule</span>
+            </div>
+
+            <pre class="code-box mb-0"><code>{{ fullNgModuleExample }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Property Cards -->
+    <div class="row g-3">
+        <div class="col-12 col-lg-6" *ngFor="let c of cards">
+            <div class="card shadow-sm h-100 prop-card">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                        <div>
+                            <h5 class="mb-1">
+                                <code class="prop-name">{{ c.name }}</code>
+                            </h5>
+                            <p class="text-muted mb-0">{{ c.short }}</p>
+                        </div>
+                        <span class="badge bg-primary">Property</span>
+                    </div>
+
+                    <div class="info-box mb-3">
+                        <div class="info-title">Definition</div>
+                        <p class="text-muted mb-0">{{ c.definition }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="mini-title">When to use</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let w of c.whenToUse">{{ w }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="mini-title danger-title">Common mistakes</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let m of c.commonMistakes">{{ m }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto">
+                        <div class="mini-title">Example</div>
+                        <pre class="code-box code-dark mb-0"><code>{{ c.example }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Quick Checklist</h5>
+            <div class="row g-2">
+                <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of quickChecklist">
+                    <div class="check-item">
+                        <span class="check-dot"></span>
+                        <span>{{ item }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Standalone Note -->
+    <div class="alert alert-info mt-3 mb-0">
+        <strong>Standalone note:</strong> {{ noteAboutStandalone }}
+    </div>
+</div>

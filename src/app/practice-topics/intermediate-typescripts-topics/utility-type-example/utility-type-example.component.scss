@@ -1,0 +1,45 @@
+.list-box {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    font-weight: 500;
+  }
+}
+
+.example-box {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  border: 1px dashed #6c757d;
+}
+
+.note-text {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.partial-card {
+  border-left: 4px solid #0d6efd;
+}
+
+.required-card {
+  border-left: 4px solid #198754;
+}
+
+.readonly-card {
+  border-left: 4px solid #dc3545;
+}
+
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}

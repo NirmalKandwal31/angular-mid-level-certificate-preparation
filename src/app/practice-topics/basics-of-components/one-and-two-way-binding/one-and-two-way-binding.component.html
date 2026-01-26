@@ -1,0 +1,140 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <div>
+            <h3 class="mb-1">One-Way vs Two-Way Binding (Clear Demo)</h3>
+            <p class="text-muted mb-0">
+                See what changes in TS and what changes in HTML (with code + output).
+            </p>
+        </div>
+
+        <button class="btn btn-outline-secondary" (click)="reset()">Reset</button>
+    </div>
+
+    <!-- Show TS snippet once -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">TypeScript (Component State)</h5>
+            <p class="text-muted mb-2">
+                These are the variables in your <strong>component.ts</strong>.
+            </p>
+            <pre class="code-box mb-0"><code [textContent]="tsSnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- ONE-WAY -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">1) One-Way Binding (TS → HTML)</h5>
+                <span class="badge bg-primary">One-way</span>
+            </div>
+
+            <p class="text-muted">
+                Here TS controls the UI. The UI does not automatically update TS when you type.
+            </p>
+
+            <div class="demo-box">
+                <div class="label">Output (Interpolation)</div>
+                <p class="value">{{ oneWayTsValue }}</p>
+
+                <div class="line"></div>
+
+                <div class="label">Try typing in the input</div>
+                <input class="form-control" [value]="oneWayTsValue" />
+
+                <div class="hint">
+                    After typing above: <strong>TS value is still:</strong>
+                    <code>{{ oneWayTsValue }}</code>
+                </div>
+
+                <button class="btn btn-outline-primary mt-2" (click)="changeOneWayTsValue()">
+                    Change TS Value
+                </button>
+
+                <div class="hint mt-2">
+                    When TS changes, UI updates ✅ (because TS → HTML)
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <h6 class="mb-2">HTML used in this demo</h6>
+                <pre class="code-box mb-0"><code [textContent]="oneWayHtmlSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- TWO-WAY -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">2) Two-Way Binding (TS ↔ HTML)</h5>
+                <span class="badge bg-success">Two-way</span>
+            </div>
+
+            <p class="text-muted">
+                Here typing in the input updates TS immediately, and TS value updates UI immediately.
+            </p>
+
+            <!-- Manual Two-way -->
+            <div class="demo-box mb-3">
+                <div class="label">A) Manual Two-Way (Property + Event)</div>
+
+                <input class="form-control" [value]="twoWayValueManual"
+                    (input)="twoWayValueManual = $any($event.target).value" />
+
+                <div class="hint mt-2">
+                    Live TS value: <code>{{ twoWayValueManual }}</code>
+                </div>
+
+                <div class="line"></div>
+
+                <p class="value">
+                    Output (Interpolation): {{ twoWayValueManual }}
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <h6 class="mb-2">HTML used (manual)</h6>
+                <pre class="code-box mb-0"><code [textContent]="twoWayManualHtmlSnippet"></code></pre>
+            </div>
+
+            <!-- ngModel Two-way -->
+            <div class="demo-box">
+                <div class="label">B) Two-Way using ngModel (shortcut)</div>
+
+                <input class="form-control" [(ngModel)]="twoWayValueNgModel" />
+
+                <div class="hint mt-2">
+                    Live TS value: <code>{{ twoWayValueNgModel }}</code>
+                </div>
+
+                <div class="line"></div>
+
+                <p class="value">
+                    Output (Interpolation): {{ twoWayValueNgModel }}
+                </p>
+            </div>
+
+            <div class="mt-3">
+                <h6 class="mb-2">HTML used (ngModel)</h6>
+                <pre class="code-box mb-0"><code [textContent]="twoWayNgModelHtmlSnippet"></code></pre>
+            </div>
+
+            <div class="alert alert-info mt-3 mb-0">
+                <strong>Remember:</strong> <code>[(ngModel)]</code> is just a shortcut for
+                <code>[value]</code> + <code>(input)</code>.
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Summary -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Quick Summary</h5>
+            <ul class="text-muted mb-0">
+                <li><strong>One-way:</strong> TS changes → UI changes. UI typing does NOT update TS automatically.</li>
+                <li><strong>Two-way:</strong> UI typing updates TS AND TS updates UI.</li>
+            </ul>
+        </div>
+    </div>
+</div>

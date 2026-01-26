@@ -1,0 +1,109 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Constructor Syntax Options (TypeScript)</h3>
+            <p class="text-muted mb-0">
+                public/private params • readonly • parameter properties
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Parameter Properties?</h5>
+            <p class="text-muted mb-2">{{ intro }}</p>
+
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo (Choose a constructor style)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap mb-3">
+                <button class="btn btn-outline-secondary btn-sm" (click)="runDemo('normal')"
+                    [class.active]="selectedDemo === 'normal'">
+                    Normal
+                </button>
+
+                <button class="btn btn-outline-primary btn-sm" (click)="runDemo('parameter')"
+                    [class.active]="selectedDemo === 'parameter'">
+                    Parameter Properties
+                </button>
+
+                <button class="btn btn-outline-danger btn-sm" (click)="runDemo('private')"
+                    [class.active]="selectedDemo === 'private'">
+                    private
+                </button>
+
+                <button class="btn btn-outline-success btn-sm" (click)="runDemo('readonly')"
+                    [class.active]="selectedDemo === 'readonly'">
+                    readonly
+                </button>
+            </div>
+
+            <div class="mini">
+                <div class="mini-title">{{ outputTitle }}</div>
+                <ul class="text-muted mb-0">
+                    <li *ngFor="let l of outputLines">{{ l }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code snippets -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) Normal constructor</div>
+                <pre class="code-box mb-0"><code [textContent]="normalConstructorSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) Parameter properties (public params)</div>
+                <pre class="code-box mb-0"><code [textContent]="parameterPropsSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) private parameter</div>
+                <pre class="code-box mb-0"><code [textContent]="privateSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">4) readonly parameter</div>
+                <pre class="code-box mb-0"><code [textContent]="readonlySnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">5) Quick guide</div>
+                <pre class="code-box mb-0"><code [textContent]="quickGuideSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>constructor(public name: string)</code> creates and assigns <code>name</code> automatically.
+                </li>
+                <li><code>private</code> hides values from outside the class.</li>
+                <li><code>readonly</code> allows one-time assignment (usually in constructor).</li>
+                <li>This syntax is heavily used in Angular dependency injection.</li>
+            </ul>
+        </div>
+    </div>
+</div>

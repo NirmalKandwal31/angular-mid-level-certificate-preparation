@@ -1,0 +1,183 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Lifecycle Hooks</h3>
+            <p class="text-muted mb-0">
+                ngOnInit • ngOnChanges • ngAfterViewInit • ngOnDestroy
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Lifecycle Hooks?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Hook cards -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6" *ngFor="let h of hookCards">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start gap-2">
+                        <h5 class="mb-1">{{ h.name }}</h5>
+                        <span class="badge bg-primary">Hook</span>
+                    </div>
+
+                    <div class="text-muted">
+                        <p class="mb-2"><strong>When:</strong> {{ h.when }}</p>
+                        <p class="mb-0"><strong>Used for:</strong> {{ h.usedFor }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                This demo helps you understand when each hook runs. Try changing the input value,
+                observe focus after view init, and start/stop a timer to understand cleanup.
+            </p>
+
+            <div class="demo-box">
+                <!-- ngOnChanges -->
+                <div class="mb-3">
+                    <div class="fw-semibold mb-1">ngOnChanges (simulate Input change)</div>
+
+                    <div class="d-flex gap-2 flex-wrap">
+                        <input class="form-control" [(ngModel)]="simulatedParentText"
+                            placeholder="Type a new parent value..." />
+                        <button type="button" class="btn btn-outline-primary" (click)="simulateInputChange()">
+                            Simulate Parent Update
+                        </button>
+                    </div>
+
+                    <div class="mt-2">
+                        <strong>Current Input value:</strong>
+                        <code>{{ parentValue }}</code>
+                    </div>
+
+                    <div class="small text-muted mt-1">
+                        In real apps, ngOnChanges runs when parent changes an Input binding.
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- ngAfterViewInit -->
+                <div class="mb-3">
+                    <div class="fw-semibold mb-1">ngAfterViewInit (ViewChild becomes available)</div>
+
+                    <input #demoInput class="form-control" placeholder="This input is focused after view init" />
+
+                    <div class="small text-muted mt-1">
+                        After the view renders, Angular runs ngAfterViewInit — then ViewChild can access DOM.
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- ngOnDestroy -->
+                <div class="mb-0">
+                    <div class="fw-semibold mb-1">ngOnDestroy (cleanup example)</div>
+
+                    <p class="mb-2">
+                        Timer seconds:
+                        <strong>{{ seconds }}</strong>
+                    </p>
+
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button type="button" class="btn btn-outline-success" (click)="startTimer()"
+                            [disabled]="timerRunning">
+                            Start Timer
+                        </button>
+
+                        <button type="button" class="btn btn-outline-warning" (click)="stopTimer()"
+                            [disabled]="!timerRunning">
+                            Stop Timer
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary" (click)="resetLogs()">
+                            Clear Logs
+                        </button>
+                    </div>
+
+                    <div class="small text-muted mt-2">
+                        If you navigate away, ngOnDestroy should clear the interval to avoid memory leaks.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logs -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                <h5 class="mb-0">Hook Call Logs</h5>
+                <span class="badge bg-primary">Order</span>
+            </div>
+
+            <div class="logs">
+                <div *ngIf="logs.length === 0" class="text-muted">
+                    No logs yet.
+                </div>
+
+                <ul *ngIf="logs.length > 0" class="mb-0">
+                    <li *ngFor="let l of logs">{{ l }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">ngOnInit</div>
+                <pre class="code-box mb-0"><code [textContent]="initSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">ngOnChanges</div>
+                <pre class="code-box mb-0"><code [textContent]="changesSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">ngAfterViewInit</div>
+                <pre class="code-box mb-0"><code [textContent]="afterViewInitSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">ngOnDestroy</div>
+                <pre class="code-box mb-0"><code [textContent]="destroySnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>ngOnInit</code> → initialize data (API calls, setup)</li>
+                <li><code>ngOnChanges</code> → react to Input changes</li>
+                <li><code>ngAfterViewInit</code> → DOM/ViewChild access</li>
+                <li><code>ngOnDestroy</code> → cleanup (unsubscribe, clear timers)</li>
+            </ul>
+        </div>
+    </div>
+</div>

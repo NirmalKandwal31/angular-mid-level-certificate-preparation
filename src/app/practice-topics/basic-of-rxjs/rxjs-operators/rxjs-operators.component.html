@@ -1,0 +1,190 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">RxJS Operators</h3>
+            <p class="text-muted mb-0">map • filter • switchMap • tap • catchError</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <p class="text-muted mb-2">{{ intro }}</p>
+
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of keyPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Operator table -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Common Operators</h5>
+
+            <table class="table table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>What it does</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let op of operatorsSummary">
+                        <td><code>{{ op.name }}</code></td>
+                        <td>{{ op.meaning }}</td>
+                        <td class="text-muted">{{ op.example }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Live demos -->
+    <div class="row g-3 mb-3">
+        <!-- Demo 1 -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">Demo 1: map + filter + tap</h5>
+                        <span class="badge bg-primary">Demo</span>
+                    </div>
+
+                    <p class="text-muted">
+                        We start with users → <code>tap</code> logs → <code>filter</code> keeps only admins →
+                        <code>map</code> transforms into labels.
+                    </p>
+
+                    <button class="btn btn-outline-primary mb-3" (click)="runMapFilterDemo()">
+                        Run Demo
+                    </button>
+
+                    <div class="mini-card mb-3">
+                        <div class="mini-title">Result (after filter + map)</div>
+                        <div *ngIf="mapFilterResult.length === 0" class="text-muted">
+                            No result yet. Click "Run Demo".
+                        </div>
+                        <ul *ngIf="mapFilterResult.length > 0" class="mb-0">
+                            <li *ngFor="let r of mapFilterResult">{{ r }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-title">tap logs (debug)</div>
+                        <div *ngIf="tapLogs.length === 0" class="text-muted">
+                            No logs yet.
+                        </div>
+                        <ul *ngIf="tapLogs.length > 0" class="mb-0">
+                            <li *ngFor="let l of tapLogs">{{ l }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo 2 -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">Demo 2: switchMap (latest wins)</h5>
+                        <span class="badge bg-success">Demo</span>
+                    </div>
+
+                    <p class="text-muted">
+                        switchMap cancels the previous request when a new value arrives. Great for search boxes.
+                    </p>
+
+                    <input class="form-control mb-2" placeholder="Type search term (try fast: a, an, ang...)"
+                        (input)="emitSearch(($any($event.target).value))" />
+
+                    <div class="mini-card">
+                        <div class="mini-title">Status</div>
+                        <div><strong>Latest term:</strong> <code>{{ latestSearchTerm || '(none)' }}</code></div>
+                        <div><strong>Status:</strong> {{ searchStatus }}</div>
+                        <div class="mt-2">
+                            <strong>Result:</strong>
+                            <code>{{ searchResult || '(waiting...)' }}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo 3: catchError -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Demo 3: catchError (fallback on error)</h5>
+                <span class="badge bg-warning text-dark">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                catchError intercepts errors and returns a new observable (fallback),
+                so your stream does not crash.
+            </p>
+
+            <div class="d-flex gap-2 flex-wrap mb-2">
+                <button class="btn btn-outline-success" (click)="runCatchErrorDemo(false)">
+                    Run Success
+                </button>
+
+                <button class="btn btn-outline-danger" (click)="runCatchErrorDemo(true)">
+                    Run Failure (fallback)
+                </button>
+            </div>
+
+            <div class="mini-card">
+                <div class="mini-title">Output</div>
+                <div><strong>Status:</strong> {{ errorDemoStatus }}</div>
+                <div class="mt-2">
+                    <strong>Result:</strong>
+                    <code>{{ errorDemoResult || '(none)' }}</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">pipe() syntax (chaining operators)</div>
+                <pre class="code-box mb-0"><code [textContent]="pipeSyntaxSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">map</div>
+                <pre class="code-box mb-0"><code [textContent]="mapSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">filter</div>
+                <pre class="code-box mb-0"><code [textContent]="filterSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">switchMap</div>
+                <pre class="code-box mb-0"><code [textContent]="switchMapSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">tap</div>
+                <pre class="code-box mb-0"><code [textContent]="tapSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">catchError</div>
+                <pre class="code-box mb-0"><code [textContent]="catchErrorSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+</div>

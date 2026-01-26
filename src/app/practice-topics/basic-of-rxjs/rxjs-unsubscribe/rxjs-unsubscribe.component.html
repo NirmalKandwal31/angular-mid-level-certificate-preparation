@@ -1,0 +1,149 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Unsubscribe Strategies (RxJS)</h3>
+            <p class="text-muted mb-0">async pipe • takeUntil • Subscription cleanup</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Why Unsubscribe?</h5>
+            <p class="text-muted mb-2">{{ intro }}</p>
+            <pre class="code-box mb-0"><code [textContent]="whySnippet"></code></pre>
+        </div>
+    </div>
+
+    <!-- Strategies list -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Common Strategies</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let s of strategies">{{ s }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live demos -->
+    <div class="row g-3 mb-3">
+        <!-- Strategy 1: async pipe -->
+        <div class="col-12 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">1) Async Pipe</h5>
+                        <span class="badge bg-primary">Best</span>
+                    </div>
+
+                    <p class="text-muted small mb-2">
+                        {{ asyncPipeNote }}
+                    </p>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Live Counter</div>
+                        <div class="big-number">{{ counter$ | async }}</div>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="fw-semibold mb-2">Code</div>
+                        <pre class="code-box mb-0"><code [textContent]="asyncSnippet"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy 2: takeUntil -->
+        <div class="col-12 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">2) takeUntil</h5>
+                        <span class="badge bg-success">Clean</span>
+                    </div>
+
+                    <p class="text-muted small mb-2">
+                        Use a <code>destroy$</code> Subject. Emit in <code>ngOnDestroy</code> to stop all streams.
+                    </p>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Value</div>
+                        <div class="big-number">{{ takeUntilValue }}</div>
+
+                        <div class="d-flex gap-2 flex-wrap mt-2">
+                            <button class="btn btn-outline-success btn-sm" (click)="startTakeUntil()"
+                                [disabled]="takeUntilRunning">
+                                Start
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="stopTakeUntilManually()"
+                                [disabled]="!takeUntilRunning">
+                                Stop (emit destroy$)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="fw-semibold mb-2">Code</div>
+                        <pre class="code-box mb-0"><code [textContent]="takeUntilSnippet"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy 3: manual subscription -->
+        <div class="col-12 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="mb-0">3) Manual unsubscribe</h5>
+                        <span class="badge bg-warning text-dark">Classic</span>
+                    </div>
+
+                    <p class="text-muted small mb-2">
+                        Store the subscription and unsubscribe explicitly in <code>ngOnDestroy</code>.
+                    </p>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Value</div>
+                        <div class="big-number">{{ manualValue }}</div>
+
+                        <div class="d-flex gap-2 flex-wrap mt-2">
+                            <button class="btn btn-outline-success btn-sm" (click)="startManual()"
+                                [disabled]="manualRunning">
+                                Start
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="stopManual()"
+                                [disabled]="!manualRunning">
+                                Stop (unsubscribe)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="fw-semibold mb-2">Code</div>
+                        <pre class="code-box mb-0"><code [textContent]="manualSnippet"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset -->
+    <div class="d-flex gap-2 flex-wrap mb-3">
+        <button class="btn btn-outline-secondary" (click)="reset()">Reset demo values</button>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><strong>Prefer async pipe</strong> when rendering Observables in the template.</li>
+                <li><strong>takeUntil</strong> is a clean pattern for multiple subscriptions in a component.</li>
+                <li>Manual <code>unsubscribe()</code> works but can become messy as subscriptions grow.</li>
+            </ul>
+        </div>
+    </div>
+</div>

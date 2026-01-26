@@ -1,0 +1,16 @@
+<select (change)="selectedModelValue($event)">
+    <option value="">Choose...</option>
+    <option *ngFor="let model of allModels" [value]="model.code">
+        {{ model.description }}
+    </option>
+</select>
+
+<select (change)="selectedColorValue($event)" [disabled]="colors()?.length === 0">
+    <option value="">Choose...</option>
+    <option *ngFor="let color of colors()" [value]="color.code">
+        {{ color.description }}
+    </option>
+</select>
+
+<img *ngIf="selectedModel()?.code && selectedColor()?.code"
+    [src]="'https://interstate21.com/tesla-app/images/' + selectedModel()!.code + '/' + selectedColor()!.code + '.jpg'" />

@@ -1,0 +1,13 @@
+<h1>Select Car and Model : </h1>
+<select name="" id="" (change)="selectedCarEvent($event)">
+    <option value=" ">Choose...</option>
+    <option *ngFor="let cars of availableCars" [value]="cars.code">{{cars.description}}</option>
+</select>
+
+<select name="" id="" (change)="selectedColorEvent($event)">
+    <option *ngFor="let color of availableColors" [value]="color.code">{{color.description}}</option>
+</select>
+
+<div>
+    <img src="{{imageUrlSrc}}" />
+</div>

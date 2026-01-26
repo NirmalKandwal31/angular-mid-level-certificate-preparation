@@ -1,0 +1,10 @@
+<div class="container">
+
+
+    <h1>Sharing Data using Behaviour Subject</h1>
+    @if (userTestData$ | async; as users) {
+    @for (user of users; track user.name) {
+    <p>{{user.name}}</p>
+    }
+    }
+</div>

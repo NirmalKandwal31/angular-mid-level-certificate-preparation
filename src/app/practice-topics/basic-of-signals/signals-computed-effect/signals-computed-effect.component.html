@@ -1,0 +1,158 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">computed() and effect()</h3>
+            <p class="text-muted mb-0">
+                computed for derived state • effect for side-effects
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Definitions -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">computed()</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of computedPoints">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">effect()</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of effectPoints">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo</h5>
+                <span class="badge bg-primary">Signals</span>
+            </div>
+
+            <p class="text-muted">
+                Change the values below. computed() recalculates totals, effect() logs changes.
+            </p>
+
+            <div class="demo-box">
+                <div class="row g-3">
+                    <div class="col-12 col-lg-6">
+                        <div class="mini">
+                            <div class="mini-title">Controls</div>
+
+                            <p><strong>Price:</strong> ₹{{ price() }}</p>
+
+                            <div class="d-flex gap-2 flex-wrap mb-2">
+                                <button class="btn btn-outline-primary btn-sm" (click)="incQty()">
+                                    + Quantity
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" (click)="decQty()">
+                                    - Quantity
+                                </button>
+                            </div>
+
+                            <button class="btn btn-outline-success btn-sm" (click)="toggleDiscount()">
+                                Toggle Discount
+                            </button>
+
+                            <button class="btn btn-outline-danger btn-sm ms-2" (click)="reset()">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="mini">
+                            <div class="mini-title">Derived State (computed)</div>
+
+                            <p>
+                                Quantity: <code>{{ quantity() }}</code>
+                            </p>
+                            <p>
+                                Total Price: <code>₹{{ totalPrice() }}</code>
+                            </p>
+                            <p>
+                                Discounted Price:
+                                <code>₹{{ discountedPrice() }}</code>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini mt-3">
+                    <div class="mini-title">effect() logs (side-effects)</div>
+
+                    <div *ngIf="logs.length === 0" class="text-muted">
+                        Interact with controls to see logs.
+                    </div>
+
+                    <ul *ngIf="logs.length > 0" class="mb-0">
+                        <li *ngFor="let l of logs">{{ l }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avoid heavy work -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Avoid Heavy Work in effect()</h5>
+
+            <ul class="text-muted mb-3">
+                <li *ngFor="let a of avoidInEffect">{{ a }}</li>
+            </ul>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="code-card danger">
+                        <div class="fw-semibold mb-2">❌ Bad Pattern</div>
+                        <pre class="code-box mb-0">
+<code [textContent]="badEffectSnippet"></code>
+            </pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="code-card success">
+                        <div class="fw-semibold mb-2">✅ Good Pattern</div>
+                        <pre class="code-box mb-0">
+<code [textContent]="goodPatternSnippet"></code>
+            </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Best Practices</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let b of bestUseCases">{{ b }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

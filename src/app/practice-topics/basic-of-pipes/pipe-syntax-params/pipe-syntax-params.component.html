@@ -1,0 +1,126 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Pipe Syntax & Parameters</h3>
+            <p class="text-muted mb-0">
+                How to use pipes with arguments and how to chain pipes.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Basic Pipe Syntax</h5>
+            <ul class="text-muted mb-2">
+                <li *ngFor="let d of definitions">{{ d }}</li>
+            </ul>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="snippet">
+                        <div class="snippet-title">Basic</div>
+                        <pre class="code-box"><code>{{ basicSyntaxCode }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="snippet">
+                        <div class="snippet-title">With Parameters</div>
+                        <pre class="code-box"><code>{{ paramSyntaxCode }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Examples -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Examples of Parameters</h5>
+
+            <div class="row g-3">
+                <!-- Date -->
+                <div class="col-12 col-lg-4">
+                    <div class="example-card">
+                        <div class="example-title">Date Pipe</div>
+                        <div class="example-output">
+                            <div><strong>fullDate:</strong> {{ today | date:'fullDate' }}</div>
+                            <div><strong>shortTime:</strong> {{ today | date:'shortTime' }}</div>
+                        </div>
+                        <pre class="code-box mb-0"><code>{{ dateParamCode }}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Currency -->
+                <div class="col-12 col-lg-4">
+                    <div class="example-card">
+                        <div class="example-title">Currency Pipe</div>
+                        <div class="example-output">
+                            <div><strong>USD:</strong> {{ price | currency:'USD':'symbol':'1.2-2' }}</div>
+                        </div>
+                        <pre class="code-box mb-0"><code>{{ currencyParamCode }}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Slice -->
+                <div class="col-12 col-lg-4">
+                    <div class="example-card">
+                        <div class="example-title">Slice Pipe</div>
+                        <div class="example-output">
+                            <div>
+                                <strong>slice(1,4):</strong>
+                                <span *ngFor="let f of fruits | slice:1:4; let last = last">
+                                    {{ f }}<span *ngIf="!last">, </span>
+                                </span>
+                            </div>
+                        </div>
+                        <pre class="code-box mb-0"><code>{{ sliceParamCode }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chaining -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Chaining Pipes</h5>
+                <span class="badge bg-primary">Chaining</span>
+            </div>
+
+            <p class="text-muted">
+                You can chain pipes by writing multiple pipes. Output of one becomes input of the next.
+            </p>
+
+            <div class="demo-box mb-3">
+                <div><strong>Original:</strong> {{ name }}</div>
+                <div><strong>Chained:</strong> {{ name | titlecase | slice:0:8 }}</div>
+                <div class="muted small mt-2">
+                    titlecase → then slice(0,8)
+                </div>
+            </div>
+
+            <ul class="text-muted mb-2">
+                <li *ngFor="let n of chainingNotes">{{ n }}</li>
+            </ul>
+
+            <pre class="code-box mb-0"><code>{{ chainingCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>value | pipe</code> is the base syntax.</li>
+                <li><code>value | pipe:arg1:arg2</code> passes parameters.</li>
+                <li>Chaining applies multiple transformations step-by-step.</li>
+            </ul>
+        </div>
+    </div>
+</div>

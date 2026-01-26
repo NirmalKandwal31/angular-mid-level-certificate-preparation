@@ -1,0 +1,9 @@
+<h1>Summary :</h1>
+
+<p>Car Model : {{summaryData?.description}}</p>
+<p>Max Speed {{summaryData?.speed}}</p>
+<p>Price: {{summaryData?.price}}</p>
+<p>Range: {{summaryData?.range}}</p>
+<p>Yoke :{{(isYokeSelected | async) ?'Yoke is Selected' :'Not Selected '}}</p>
+<p>Tow :{{(isTowSelected | async) ?'Tow is Selected' :'Not Selected '}}</p>
+<p>Total Price : {{totalPrice}}</p>

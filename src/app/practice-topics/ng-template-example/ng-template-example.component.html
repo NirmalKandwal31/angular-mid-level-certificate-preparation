@@ -1,0 +1,9 @@
+<div *ngIf="showDivData;else ngTemplateData">
+    <p>This is Div Data</p>
+
+</div>
+<ng-template #ngTemplateData>
+    <p>This is Ng-Template Data</p>
+</ng-template>
+
+<button (click)="toggleData()">Show Hide Ng-Template Data</button>

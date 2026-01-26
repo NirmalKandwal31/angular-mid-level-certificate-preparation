@@ -1,0 +1,85 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Rest Operator (...)</h3>
+        <p class="text-muted mb-0">
+            Understanding how the rest operator works in JavaScript and TypeScript.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is the Rest Operator?</h5>
+            <p class="text-muted">
+                The <strong>rest operator (<code>...</code>)</strong> is used to collect
+                multiple elements into a single array or object.
+                It is commonly used with array destructuring and function parameters.
+            </p>
+
+            <p class="text-muted mb-0">
+                It helps write cleaner and more readable code when working with
+                variable-length data.
+            </p>
+        </div>
+    </div>
+
+    <!-- Why use -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Why do we use the Rest Operator?</h5>
+            <ul class="text-muted mb-0">
+                <li>To extract specific values and group the remaining ones.</li>
+                <li>To avoid manual slicing of arrays.</li>
+                <li>To write clean and readable destructuring logic.</li>
+                <li>Very useful in functions with multiple arguments.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Without rest -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>All Fruits (Original Array)</h5>
+            <p class="text-muted">
+                This list shows the original array without using the rest operator.
+            </p>
+
+            <ul class="list-box">
+                @for (fruit of fruitsList; track fruit) {
+                <li>{{ fruit }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- With rest -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5>Fruits Using Rest Operator</h5>
+            <p class="text-muted">
+                Using destructuring:
+                <code>[first, second, ...rest]</code>, the remaining fruits are grouped
+                into a new array.
+            </p>
+
+            <ul class="list-box rest-box">
+                @for (fruit of remainingfruitsList; track fruit) {
+                <li>{{ fruit }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li>The rest operator collects remaining values into an array.</li>
+                <li>It is written using three dots: <code>...</code>.</li>
+                <li>Commonly used with destructuring and function parameters.</li>
+                <li>Makes code shorter, cleaner, and more maintainable.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+            <div>
+                <h5 class="mb-1">Sharing Data Using Signals — Step 2</h5>
+                <p class="text-muted mb-0">
+                    Read shared signal from service (auto updates)
+                </p>
+            </div>
+            <span class="badge bg-success">Step 2</span>
+        </div>
+
+        <p class="text-muted">{{ info }}</p>
+
+        <div class="mini">
+            <div class="mini-title">Data coming from SharedService</div>
+
+            @for(u of sharedService.testDataFromStep1(); track u.id){
+            <div class="item ok">
+                <strong>{{ u.name }}</strong>
+                <span class="muted">Age: {{ u.age }}</span>
+            </div>
+            }
+
+            @if(sharedService.testDataFromStep1().length === 0){
+            <p class="text-muted mb-0">
+                No data received yet. Step 1 will push filtered users into the service.
+            </p>
+            }
+        </div>
+    </div>
+</div>

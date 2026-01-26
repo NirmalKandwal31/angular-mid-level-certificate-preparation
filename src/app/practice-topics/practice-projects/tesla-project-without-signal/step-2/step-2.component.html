@@ -1,0 +1,15 @@
+<h1>Selected COnfiguration Options</h1>
+
+<select (change)="selectedConfig($event)">
+    <option value=" ">Choose...</option>
+    <option *ngFor="let cfg of configurations" [value]="cfg.id">{{cfg.description}}</option>
+</select>
+
+<div *ngIf="isConfig">
+    <p>Range : {{selectedConfigObj.range}}</p>
+    <p>Max Speed : {{selectedConfigObj.speed}}</p>
+    <p>Price : {{selectedConfigObj.price}}</p>
+
+    <input type="checkbox" name="Tow" id="" [checked]="isTow" (change)="towCheckedEvent($event)">Tow (+$1000)
+    <input type="checkbox" name="yoke" id="" [checked]="isYoke" (change)="yokeCheckedEvent($event)">Yoke (+$1000)
+</div>

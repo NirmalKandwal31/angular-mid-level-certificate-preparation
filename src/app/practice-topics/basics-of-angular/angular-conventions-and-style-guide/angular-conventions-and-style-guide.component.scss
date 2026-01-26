@@ -1,0 +1,63 @@
+.principle-card {
+  border-radius: 12px;
+}
+
+.rule-box {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.code-box {
+  border-radius: 12px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.code-good {
+  background: #0b1220;
+  color: #e6edf3;
+}
+
+.code-avoid {
+  background: #fff5f5;
+  color: #842029;
+  border: 1px solid #f1aeb5;
+}
+
+.label-good,
+.label-avoid {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.label-good {
+  color: #0d6efd;
+}
+
+.label-avoid {
+  color: #842029;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.check-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0d6efd;
+  display: inline-block;
+}

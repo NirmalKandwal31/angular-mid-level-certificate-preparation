@@ -1,0 +1,28 @@
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.option-btn.correct {
+  border-color: #198754;
+}
+
+.option-btn.wrong {
+  border-color: #dc3545;
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}

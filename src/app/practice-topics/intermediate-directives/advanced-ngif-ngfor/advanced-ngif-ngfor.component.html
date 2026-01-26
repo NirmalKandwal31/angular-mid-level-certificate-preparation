@@ -1,0 +1,149 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Advanced ngIf & ngFor</h3>
+            <p class="text-muted mb-0">
+                else templates, ng-container, and trackBy for better performance.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What you'll learn</h5>
+            <ul class="text-muted mb-0">
+                <li><strong>ngIf else templates</strong> to handle loading/empty states</li>
+                <li><strong>ng-container</strong> to group structural directives without adding extra DOM</li>
+                <li><strong>trackBy</strong> to prevent unnecessary re-renders in lists</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 1) ngIf else -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">1) ngIf with else template</h5>
+                <span class="badge bg-primary">ngIf</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>else</code> to render an alternative template when the condition is false.
+                Perfect for loading states.
+            </p>
+
+            <div class="demo-box mb-3">
+                <button class="btn btn-outline-primary me-2" (click)="toggleLoading()">
+                    Toggle Loading
+                </button>
+
+                <div class="mt-3">
+                    <div *ngIf="!isLoading; else loadingTpl" class="alert alert-success mb-0">
+                        Content loaded ✅
+                    </div>
+
+                    <ng-template #loadingTpl>
+                        <div class="alert alert-warning mb-0">
+                            Loading... ⏳
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ ngIfElseCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- 2) ng-container -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">2) ng-container (no extra DOM)</h5>
+                <span class="badge bg-primary">ng-container</span>
+            </div>
+
+            <p class="text-muted">
+                <code>ng-container</code> groups structural directives but does not create an extra HTML element in the
+                DOM.
+            </p>
+
+            <div class="demo-box mb-3">
+                <ng-container *ngIf="users.length > 0; else emptyTpl">
+                    <div class="alert alert-info mb-0">
+                        Users available: <strong>{{ users.length }}</strong>
+                    </div>
+                </ng-container>
+
+                <ng-template #emptyTpl>
+                    <div class="alert alert-secondary mb-0">
+                        No users found.
+                    </div>
+                </ng-template>
+            </div>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ ngContainerCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- 3) ngFor + trackBy -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">3) ngFor with trackBy (performance)</h5>
+                <span class="badge bg-primary">trackBy</span>
+            </div>
+
+            <p class="text-muted">
+                Use <code>trackBy</code> to help Angular identify items by a stable key (like <code>id</code>),
+                so DOM nodes can be reused instead of re-created.
+            </p>
+
+            <div class="demo-box mb-3">
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-outline-success" (click)="addUser()">Add User</button>
+                    <button class="btn btn-outline-danger" (click)="removeFirst()">Remove First</button>
+                    <button class="btn btn-outline-secondary" (click)="shuffleUsers()">Shuffle</button>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-12 col-lg-6">
+                        <div class="mini-title">List rendering with trackBy</div>
+                        <ul class="list-box mb-0">
+                            <li *ngFor="let user of users; trackBy: trackByUserId">
+                                <span class="pill">#{{ user.id }}</span>
+                                {{ user.name }} — <span class="muted">{{ user.role }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="mini-title">Why it helps</div>
+                        <ul class="text-muted mb-0">
+                            <li *ngFor="let n of perfNote">{{ n }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fw-semibold mb-2">Code</div>
+            <pre class="code-box mb-0"><code>{{ trackByCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Quick summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>*ngIf="condition; else tpl"</code> is best for loading/empty states.</li>
+                <li><code>ng-container</code> avoids unnecessary wrapper elements.</li>
+                <li><code>trackBy</code> improves performance for large/frequently updated lists.</li>
+            </ul>
+        </div>
+    </div>
+</div>

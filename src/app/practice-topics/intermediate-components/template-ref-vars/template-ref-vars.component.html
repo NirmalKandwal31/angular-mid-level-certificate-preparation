@@ -1,0 +1,120 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Template Reference Variables</h3>
+            <p class="text-muted mb-0">#ref • Access DOM values • Use with ViewChild</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is a Template Reference Variable?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of overviewPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                Type something in the input. Then read it using:
+                <strong>#ref</strong> inside the template OR using <strong>ViewChild</strong> in TypeScript.
+            </p>
+
+            <div class="demo-box">
+                <!-- ✅ Template Ref Variable -->
+                <label class="form-label fw-semibold mb-1">Input (has #nameInput)</label>
+                <input #nameInput class="form-control" type="text" placeholder="Type here..." />
+
+                <div class="d-flex gap-2 flex-wrap mt-3">
+                    <!-- Read using template ref value -->
+                    <button type="button" class="btn btn-outline-primary" (click)="readFromTemplate(nameInput.value)">
+                        Read using #ref (template)
+                    </button>
+
+                    <!-- Read using ViewChild -->
+                    <button type="button" class="btn btn-outline-success" (click)="readFromViewChild()">
+                        Read using ViewChild (TS)
+                    </button>
+
+                    <button type="button" class="btn btn-outline-secondary" (click)="focusInput()">
+                        Focus (ViewChild)
+                    </button>
+
+                    <button type="button" class="btn btn-outline-warning" (click)="setDemoValue()">
+                        Set Value (ViewChild)
+                    </button>
+
+                    <button type="button" class="btn btn-outline-danger" (click)="clear()">
+                        Clear
+                    </button>
+                </div>
+
+                <div class="result-grid mt-3">
+                    <div class="mini-card">
+                        <div class="mini-title">Output using #ref</div>
+                        <div class="result">
+                            {{ currentValueFromTemplateRef || '(nothing yet)' }}
+                        </div>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Output using ViewChild</div>
+                        <div class="result">
+                            {{ currentValueFromViewChild || '(nothing yet)' }}
+                        </div>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-title">Lifecycle Note</div>
+                        <div class="result text-muted">
+                            {{ afterViewInitMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Code Examples</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) #ref in template</div>
+                <pre class="code-box mb-0"><code [textContent]="refSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) Access #ref in TypeScript using ViewChild</div>
+                <pre class="code-box mb-0"><code [textContent]="viewChildSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) Focus an input using ViewChild</div>
+                <pre class="code-box mb-0"><code [textContent]="focusSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use Cases -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Common Use Cases</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let u of useCases">{{ u }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

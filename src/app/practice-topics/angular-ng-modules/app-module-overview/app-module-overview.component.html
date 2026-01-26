@@ -1,0 +1,83 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Main AppModule & Root Module</h3>
+            <p class="text-muted mb-0">
+                Understanding the root module and how Angular bootstraps the application.
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Introduction -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is AppModule?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let point of introPoints">{{ point }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Root Module Explanation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Root Module (Older Angular Structure)</h5>
+            <p class="text-muted mb-0">
+                In the traditional Angular architecture, <strong>AppModule</strong> is the
+                <strong>root NgModule</strong>.
+                Angular loads this module first and uses it to configure the entire application.
+            </p>
+        </div>
+    </div>
+
+    <!-- AppModule Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h5 class="mb-0">Basic AppModule Example</h5>
+                <span class="badge bg-primary">NgModule</span>
+            </div>
+
+            <pre class="code-box mb-0"><code>{{ appModuleExample }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Bootstrap Explanation -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What does "bootstrap: [AppComponent]" mean?</h5>
+
+            <p class="text-muted">
+                The <code>bootstrap</code> property tells Angular which component should be
+                loaded first when the application starts.
+            </p>
+
+            <ul class="text-muted mb-0">
+                <li *ngFor="let b of bootstrapExplanation">{{ b }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- How Bootstrapping Works -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Application Startup Flow</h5>
+            <ol class="text-muted mb-0">
+                <li>Browser loads <code>index.html</code>.</li>
+                <li>Angular loads <code>main.ts</code>.</li>
+                <li><code>AppModule</code> is loaded as the root module.</li>
+                <li><code>AppComponent</code> is bootstrapped.</li>
+                <li>
+                    <code>&lt;app-root&gt;</code> is rendered inside <code>index.html</code>.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Modern Angular Note -->
+    <div class="alert alert-info mb-0">
+        <strong>Modern Angular Note:</strong> {{ modernNote }}
+    </div>
+</div>

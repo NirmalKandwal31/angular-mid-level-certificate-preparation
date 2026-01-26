@@ -1,0 +1,155 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Arrow Function Syntax</h3>
+            <p class="text-muted mb-0">
+                Short function syntax + lexical <code>this</code> (very common in Angular/RxJS).
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What is an Arrow Function?</h5>
+            <p class="text-muted mb-2">
+                An <strong>arrow function</strong> is a shorter way to write a function in JavaScript/TypeScript:
+                <code>() =&gt; &#123; &#125;</code>.
+                The most important behavior is that it uses
+                <strong>lexical <code>this</code></strong> (it captures <code>this</code> from the surrounding scope).
+            </p>
+
+            <h6 class="mb-2">Why it matters</h6>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let w of whyImportant">{{ w }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Syntax Examples -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Common Syntax Examples</h5>
+                <span class="badge bg-primary">Syntax</span>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="snippet">
+                        <div class="snippet-title">Basic (implicit return)</div>
+                        <pre class="code-box"><code>{{ syntaxExamples.basic }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="snippet">
+                        <div class="snippet-title">Block body (explicit return)</div>
+                        <pre class="code-box"><code>{{ syntaxExamples.blockBody }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="snippet">
+                        <div class="snippet-title">Single parameter</div>
+                        <pre class="code-box"><code>{{ syntaxExamples.singleParam }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="snippet">
+                        <div class="snippet-title">No parameters</div>
+                        <pre class="code-box"><code>{{ syntaxExamples.noParam }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="snippet">
+                        <div class="snippet-title">Returning an object</div>
+                        <pre class="code-box"><code>{{ syntaxExamples.objectReturn }}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note mt-2">
+                <strong>Note:</strong> To return an object in an implicit return arrow function,
+                wrap it in parentheses:
+                <code>() =&gt; (&#40; &#123; ... &#125; &#41;)</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lexical this -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Lexical <code>this</code> (Most Important)</h5>
+                <span class="badge bg-primary">this</span>
+            </div>
+
+            <p class="text-muted">
+                Normal functions define their own <code>this</code>. In callbacks, <code>this</code> often does not
+                point
+                to your class/component instance. Arrow functions capture <code>this</code> from the outer scope.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="snippet danger">
+                        <div class="snippet-title">Normal function (common issue)</div>
+                        <pre class="code-box"><code>{{ thisExample.normalFunction }}</code></pre>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="snippet success">
+                        <div class="snippet-title">Arrow function (recommended)</div>
+                        <pre class="code-box"><code>{{ thisExample.arrowFunction }}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap mt-3">
+                <button class="btn btn-outline-danger" (click)="runNormalThisDemo()">
+                    Normal Function Demo Note
+                </button>
+                <button class="btn btn-outline-success" (click)="runArrowThisDemo()">
+                    Arrow Function Demo Note
+                </button>
+            </div>
+
+            <div class="alert alert-info mt-3 mb-0">
+                {{ buttonMessage }}
+            </div>
+        </div>
+    </div>
+
+    <!-- RxJS Example -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Why Arrow Functions are Common in RxJS</h5>
+                <span class="badge bg-primary">RxJS</span>
+            </div>
+
+            <p class="text-muted">
+                RxJS operators use callback functions. Arrow functions keep code concise and maintain the correct
+                context.
+            </p>
+
+            <pre class="code-box mb-0"><code>{{ rxjsExample }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Limitations -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Limitations / Notes</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let l of limitations">{{ l }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

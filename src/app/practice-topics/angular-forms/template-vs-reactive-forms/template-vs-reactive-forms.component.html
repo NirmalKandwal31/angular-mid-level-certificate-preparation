@@ -1,0 +1,227 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Template-driven vs Reactive Forms</h3>
+            <p class="text-muted mb-0">
+                Template: ngModel • Reactive: FormGroup/FormControl • Scalability differences
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Overview -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Overview</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of overviewPoints">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Comparison table -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Quick Comparison</h5>
+
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>Template-driven</th>
+                            <th>Reactive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of comparisonRows">
+                            <td class="fw-semibold">{{ r.key }}</td>
+                            <td>{{ r.template }}</td>
+                            <td>{{ r.reactive }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side-by-side demos -->
+    <div class="row g-3">
+        <!-- Template-driven -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                        <h5 class="mb-0">Template-driven (ngModel)</h5>
+                        <span class="badge bg-primary">HTML-driven</span>
+                    </div>
+
+                    <p class="text-muted">
+                        The form is mostly built in the template. You bind input values using
+                        <code>[(ngModel)]</code>.
+                    </p>
+
+                    <form #tf="ngForm" (ngSubmit)="submitTemplateForm()" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Name (required)</label>
+                            <input class="form-control" name="name" [(ngModel)]="templateUser.name" required
+                                placeholder="Enter name" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email (required + email)</label>
+                            <input class="form-control" name="email" [(ngModel)]="templateUser.email" required email
+                                placeholder="Enter email" />
+                        </div>
+
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="btn btn-outline-primary" type="submit" [disabled]="tf.invalid">
+                                Submit
+                            </button>
+                            <button class="btn btn-outline-secondary" type="button" (click)="resetTemplateForm()">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="result-box mt-3">
+                        <div class="mini-title">Live Model</div>
+                        <pre class="mb-0">{{ templateUser | json }}</pre>
+
+                        <div class="mini-title mt-2">Submitted Data</div>
+                        <pre class="mb-0">{{ templateSubmittedData | json }}</pre>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="fw-semibold mb-2">Typical Template-driven Code</div>
+                        <pre class="code-box mb-0"><code [textContent]="templateHtmlSnippet"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reactive -->
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                        <h5 class="mb-0">Reactive (FormGroup / FormControl)</h5>
+                        <span class="badge bg-primary">TS-driven</span>
+                    </div>
+
+                    <p class="text-muted">
+                        The form structure is defined in TypeScript. The template just binds using
+                        <code>[formGroup]</code> and <code>formControlName</code>.
+                    </p>
+
+                    <form [formGroup]="reactiveForm" (ngSubmit)="submitReactiveForm()" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Name (required)</label>
+                            <input class="form-control" formControlName="name" placeholder="Enter name" />
+                            <div class="small text-danger mt-1"
+                                *ngIf="reactiveForm.controls.name.touched && reactiveForm.controls.name.invalid">
+                                Name is required.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email (required + email)</label>
+                            <input class="form-control" formControlName="email" placeholder="Enter email" />
+                            <div class="small text-danger mt-1"
+                                *ngIf="reactiveForm.controls.email.touched && reactiveForm.controls.email.invalid">
+                                Enter a valid email.
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="btn btn-outline-primary" type="submit" [disabled]="reactiveForm.invalid">
+                                Submit
+                            </button>
+                            <button class="btn btn-outline-secondary" type="button" (click)="resetReactiveForm()">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="result-box mt-3">
+                        <div class="mini-title">Form Value</div>
+                        <pre class="mb-0">{{ reactiveForm.value | json }}</pre>
+
+                        <div class="mini-title mt-2">Submitted Data</div>
+                        <pre class="mb-0">{{ reactiveSubmittedData | json }}</pre>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="fw-semibold mb-2">Reactive Form Code</div>
+
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <pre class="code-box mb-0"><code [textContent]="reactiveTsSnippet"></code></pre>
+                            </div>
+                            <div class="col-12">
+                                <pre class="code-box mb-0"><code [textContent]="reactiveHtmlSnippet"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scalability -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Scalability (Why Reactive is preferred for big forms)</h5>
+                <span class="badge bg-primary">Scalability</span>
+            </div>
+
+            <p class="text-muted">
+                When forms grow (nested objects, many fields, dynamic controls), reactive forms stay organized
+                because the structure is defined in TypeScript.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                    <div class="mini-card warn">
+                        <div class="mini-title">Template-driven becomes messy</div>
+                        <ul class="text-muted mb-0">
+                            <li>Many fields → lots of ngModel bindings in HTML</li>
+                            <li>Validation logic spreads across template</li>
+                            <li>Nested objects become harder to manage</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="mini-card ok">
+                        <div class="mini-title">Reactive stays structured</div>
+                        <ul class="text-muted mb-0">
+                            <li>Nested FormGroup makes structure clear</li>
+                            <li>Validation stays centralized</li>
+                            <li>Easier testing and maintainability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <div class="fw-semibold mb-2">Nested FormGroup Example (Reactive)</div>
+                <pre class="code-box mb-0"><code [textContent]="scalabilityTsSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><strong>Template-driven</strong> is great for small forms and quick setups.</li>
+                <li><strong>Reactive</strong> is best for complex forms, dynamic fields, and scalability.</li>
+                <li>If you expect the form to grow → choose <strong>Reactive Forms</strong>.</li>
+            </ul>
+        </div>
+    </div>
+</div>

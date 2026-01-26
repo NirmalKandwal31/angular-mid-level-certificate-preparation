@@ -1,0 +1,125 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">When to Use Services</h3>
+            <p class="text-muted mb-0">API calls • Shared state • Business logic separation</p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Why services exist</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Sections -->
+    <div class="row g-3">
+        <div class="col-12 col-lg-4" *ngFor="let s of sections">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">{{ s.title }}</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of s.points">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Examples -->
+    <div class="card shadow-sm mt-3 mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Code Examples (Recommended Patterns)</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">API calls inside a service</div>
+                <pre class="code-box mb-0"><code [textContent]="apiSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">Shared state in a service</div>
+                <pre class="code-box mb-0"><code [textContent]="sharedStateSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">Business logic in a service</div>
+                <pre class="code-box mb-0"><code [textContent]="businessLogicSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo (Service Doing All 3)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                This demo shows:
+                <strong>API call</strong> (simulated fetch),
+                <strong>shared state</strong> (selected user),
+                and <strong>business logic</strong> (formatUserLabel).
+            </p>
+
+            <div class="d-flex gap-2 flex-wrap mb-3">
+                <button type="button" class="btn btn-outline-primary" (click)="loadUsers()">
+                    Load Users (API)
+                </button>
+
+                <button type="button" class="btn btn-outline-secondary" (click)="clearSelection()">
+                    Clear Selection
+                </button>
+            </div>
+
+            <div class="alert alert-info" *ngIf="loading">
+                Loading users...
+            </div>
+
+            <div class="mini-card" *ngIf="!loading && users.length > 0">
+                <div class="mini-title mb-2">Users</div>
+
+                <ul class="list-group">
+                    <li class="list-group-item d-flex align-items-center justify-content-between"
+                        *ngFor="let u of users">
+                        <div>
+                            <div class="fw-semibold">{{ getLabel(u) }}</div>
+                            <div class="text-muted small">Original: {{ u.name }}</div>
+                        </div>
+
+                        <button class="btn btn-sm btn-outline-success" (click)="selectUser(u.id)">
+                            Select
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="mt-3">
+                    <strong>Selected User ID (Shared State):</strong>
+                    <code>{{ selectedId === null ? '(none)' : selectedId }}</code>
+                </div>
+            </div>
+
+            <div class="text-muted" *ngIf="!loading && users.length === 0">
+                Click <strong>Load Users</strong> to fetch data from the service.
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li>Use services to keep components focused on UI only.</li>
+                <li>Put API calls and reusable logic into services.</li>
+                <li>Use services for shared state between multiple components.</li>
+                <li>Put business rules in services for clean architecture.</li>
+            </ul>
+        </div>
+    </div>
+</div>

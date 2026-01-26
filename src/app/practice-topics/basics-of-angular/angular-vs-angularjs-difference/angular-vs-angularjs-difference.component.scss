@@ -1,0 +1,32 @@
+.chip {
+  font-weight: 600;
+  padding: 10px 12px;
+}
+
+.highlight-card {
+  border-radius: 12px;
+}
+
+.highlight-angular {
+  border: 1px solid rgba(13, 110, 253, 0.35);
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.08);
+}
+
+.highlight-angularjs {
+  border: 1px solid rgba(108, 117, 125, 0.35);
+  box-shadow: 0 0 0 4px rgba(108, 117, 125, 0.08);
+}
+
+.comparison-table thead th {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.comparison-table td,
+.comparison-table th {
+  vertical-align: top;
+}
+
+.table-responsive {
+  border-radius: 10px;
+}

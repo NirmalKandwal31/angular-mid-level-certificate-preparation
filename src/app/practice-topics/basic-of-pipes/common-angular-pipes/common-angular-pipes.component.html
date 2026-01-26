@@ -1,0 +1,113 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Common Angular Pipes</h3>
+        <p class="text-muted mb-0">
+            Pipes format and transform data directly in the template.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What are Pipes?</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let d of definitions">{{ d }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Date Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Date Pipe</h5>
+            <p class="text-muted">
+                Formats date values into readable date strings.
+            </p>
+
+            <div class="example-box">
+                <strong>Output:</strong> {{ today | date:'fullDate' }}
+            </div>
+
+            <pre class="code-box mt-2"><code>{{ dateCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Currency Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Currency Pipe</h5>
+            <p class="text-muted">
+                Formats numbers as currency based on locale.
+            </p>
+
+            <div class="example-box">
+                <strong>Output:</strong> {{ price | currency:'USD' }}
+            </div>
+
+            <pre class="code-box mt-2"><code>{{ currencyCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Percent Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Percent Pipe</h5>
+            <p class="text-muted">
+                Converts a number into percentage format.
+            </p>
+
+            <div class="example-box">
+                <strong>Output:</strong> {{ discount | percent }}
+            </div>
+
+            <pre class="code-box mt-2"><code>{{ percentCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- JSON Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>JSON Pipe</h5>
+            <p class="text-muted">
+                Displays objects in JSON format (very useful for debugging).
+            </p>
+
+            <pre class="code-box"><code>{{ user | json }}</code></pre>
+
+            <pre class="code-box mt-2"><code>{{ jsonCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Slice Pipe -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Slice Pipe</h5>
+            <p class="text-muted">
+                Extracts a portion of an array or string.
+            </p>
+
+            <div class="example-box">
+                <strong>Output:</strong>
+                <span *ngFor="let f of fruits | slice:1:4; let last = last">
+                    {{ f }}<span *ngIf="!last">, </span>
+                </span>
+            </div>
+
+            <pre class="code-box mt-2"><code>{{ sliceCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>date</code> → formats dates</li>
+                <li><code>currency</code> → formats money values</li>
+                <li><code>percent</code> → formats percentages</li>
+                <li><code>json</code> → displays objects for debugging</li>
+                <li><code>slice</code> → extracts part of array/string</li>
+            </ul>
+        </div>
+    </div>
+</div>

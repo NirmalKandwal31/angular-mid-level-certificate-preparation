@@ -1,0 +1,115 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">Basics of Routing in Angular</h3>
+        <p class="text-muted mb-0">
+            Learn how Angular navigation works using RouterModule and Routes.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is Angular Routing?</h5>
+            <p class="text-muted mb-0">
+                Angular routing allows you to navigate between different views
+                (components) without reloading the page. It is handled using
+                <code>RouterModule</code> and a <code>Routes</code> configuration.
+            </p>
+        </div>
+    </div>
+
+    <!-- RouterModule -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>RouterModule Configuration</h5>
+            <p class="text-muted">
+                <code>RouterModule</code> is responsible for setting up navigation.
+                In traditional Angular apps, it is configured in a routing module.
+            </p>
+
+            <pre class="code-box"><code>{{ routerModuleCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Routes Array -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Routes Array</h5>
+            <p class="text-muted">
+                The <code>Routes</code> array defines the mapping between URL paths
+                and components.
+            </p>
+
+            <pre class="code-box"><code>{{ routesArrayCode }}</code></pre>
+
+            <ul class="text-muted mt-2 mb-0">
+                <li><strong>path</strong> → URL segment</li>
+                <li><strong>component</strong> → component to render</li>
+                <li><strong>redirectTo</strong> → redirect path</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- pathMatch -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>pathMatch</h5>
+            <p class="text-muted">
+                <code>pathMatch</code> tells Angular how to match the URL.
+            </p>
+
+            <ul class="text-muted">
+                <li><code>full</code> → full URL must match</li>
+                <li><code>prefix</code> → URL starts with the path (default)</li>
+            </ul>
+
+            <pre class="code-box"><code>{{ pathMatchCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- redirectTo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>redirectTo</h5>
+            <p class="text-muted">
+                <code>redirectTo</code> is used to redirect one route to another.
+                Commonly used for default routes or deprecated URLs.
+            </p>
+
+            <pre class="code-box"><code>{{ redirectToCode }}</code></pre>
+        </div>
+    </div>
+
+    <!-- Lazy Loading -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Lazy Loading Entry Points</h5>
+            <p class="text-muted">
+                Lazy loading loads feature modules or routes only when they are needed.
+                This improves performance and reduces initial bundle size.
+            </p>
+
+            <pre class="code-box"><code>{{ lazyLoadingCode }}</code></pre>
+
+            <ul class="text-muted mt-2 mb-0">
+                <li>Loads code on demand</li>
+                <li>Improves application startup time</li>
+                <li>Common for admin or large feature areas</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li><code>RouterModule</code> enables navigation</li>
+                <li><code>Routes</code> array defines path-to-component mapping</li>
+                <li><code>pathMatch</code> controls URL matching</li>
+                <li><code>redirectTo</code> handles redirections</li>
+                <li>Lazy loading improves performance</li>
+            </ul>
+        </div>
+    </div>
+</div>

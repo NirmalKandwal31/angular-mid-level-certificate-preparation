@@ -1,0 +1,14 @@
+<ng-container *ngIf="showNgContainerData;else ngTemplateData">
+    <p>This is ng-conatiner data isntead of using Div Data</p>
+    <p>&lt;div&gt; is not allowed inside a &lt;ul&gt; element.</p>
+    <p>The browser will throw a DOM structure error.</p>
+    <p>The CSS layout can break because the list structure becomes invalid.</p>
+    <p>The menu items may lose their proper styling and alignment.</p>
+
+
+</ng-container>
+<ng-template #ngTemplateData>
+    <p>This is Ng-Template Data inside ng-container</p>
+</ng-template>
+
+<button (click)="toggleData()">Show Hide Ng-Container Data</button>

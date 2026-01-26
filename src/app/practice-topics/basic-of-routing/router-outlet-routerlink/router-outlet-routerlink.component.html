@@ -1,0 +1,100 @@
+<div class="container py-3">
+    <div class="mb-3">
+        <h3 class="mb-1">RouterOutlet & routerLink</h3>
+        <p class="text-muted mb-0">
+            Display routed components and navigate between routes.
+        </p>
+    </div>
+
+    <!-- Definition -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>What is Angular Routing View?</h5>
+            <p class="text-muted mb-0">
+                Angular uses <code>&lt;router-outlet&gt;</code> as a placeholder
+                where components are loaded based on the active route.
+                Navigation between routes is done using <code>routerLink</code>.
+            </p>
+        </div>
+    </div>
+
+    <!-- router-outlet -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>&lt;router-outlet&gt;</h5>
+            <p class="text-muted">
+                <code>&lt;router-outlet&gt;</code> acts as a container where
+                Angular injects the component that matches the current route.
+            </p>
+
+            <pre class="code-box"><code>{{ routerOutletCode }}</code></pre>
+
+            <div class="alert alert-info mt-2 mb-0">
+                Only one routed component is displayed inside a router-outlet at a time.
+            </div>
+        </div>
+    </div>
+
+    <!-- routerLink -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>[routerLink]</h5>
+            <p class="text-muted">
+                <code>routerLink</code> is used to navigate between routes
+                without reloading the page.
+            </p>
+
+            <pre class="code-box"><code>{{ routerLinkCode }}</code></pre>
+
+            <ul class="text-muted mt-2 mb-0">
+                <li>Works like <code>href</code> but for SPA navigation</li>
+                <li>Prevents full page reload</li>
+                <li>Keeps application state intact</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- routerLinkActive -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>routerLinkActive</h5>
+            <p class="text-muted">
+                <code>routerLinkActive</code> automatically applies a CSS class
+                when the linked route is active.
+            </p>
+
+            <pre class="code-box"><code>{{ routerLinkActiveCode }}</code></pre>
+
+            <p class="text-muted mt-2 mb-0">
+                This is commonly used to highlight the active menu item.
+            </p>
+        </div>
+    </div>
+
+    <!-- Example Nav -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5>Example Navigation Menu</h5>
+
+            <nav class="nav-box">
+                <a routerLink="/home" routerLinkActive="active-link">Home</a>
+                <a routerLink="/about" routerLinkActive="active-link">About</a>
+                <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
+            </nav>
+
+            <p class="note-text">
+                Click links to see route change and active class update.
+            </p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h5>Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let p of points">{{ p }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+.card {
+  border-radius: 12px;
+}
+
+.empty-state {
+  border: 1px dashed #adb5bd;
+  border-radius: 12px;
+  padding: 16px;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.empty-title {
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.note {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  color: #6c757d;
+}
+
+code {
+  background: #eef1f4;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.92em;
+}
+
+.code-card {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  margin-top: 12px;
+}
+
+.code-box {
+  background: #0b1220;
+  color: #e6edf3;
+  padding: 12px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 0;
+
+  code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+}

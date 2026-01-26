@@ -1,0 +1,49 @@
+<div class="card shadow-sm child-box">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+            <h5 class="mb-0">Child Component</h5>
+            <span class="badge bg-success">Child</span>
+        </div>
+
+        <p class="text-muted mb-2">
+            The content below is rendered using <code>&lt;ng-content&gt;</code>.
+            We also capture the paragraph using <code>ContentChild('para')</code>.
+        </p>
+
+        <div class="mini mb-3">
+            <div class="mini-title">Projected Content Area</div>
+            <div class="projected-area">
+                <ng-content></ng-content>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap mb-3">
+            <button class="btn btn-outline-primary btn-sm" (click)="readProjectedText()">
+                Read Text
+            </button>
+
+            <button class="btn btn-outline-warning btn-sm" (click)="highlightProjectedText()">
+                Highlight Paragraph
+            </button>
+
+            <button class="btn btn-outline-secondary btn-sm" (click)="resetStyles()">
+                Reset
+            </button>
+        </div>
+
+        <div class="alert alert-info mb-3">
+            <strong>Status:</strong> {{ status }} <br />
+            <strong>Extracted Text:</strong> <code>{{ extractedText || '(none yet)' }}</code>
+        </div>
+
+        <div class="code-card">
+            <div class="fw-semibold mb-2">Child TS (where ContentChild is)</div>
+            <pre class="code-box mb-0"><code [textContent]="childTsSnippet"></code></pre>
+        </div>
+
+        <div class="code-card">
+            <div class="fw-semibold mb-2">Child HTML (ng-content)</div>
+            <pre class="code-box mb-0"><code [textContent]="childHtmlSnippet"></code></pre>
+        </div>
+    </div>
+</div>

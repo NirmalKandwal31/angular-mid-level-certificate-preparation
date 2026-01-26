@@ -1,0 +1,161 @@
+<div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <div>
+            <h3 class="mb-1">Characteristics of Signals</h3>
+            <p class="text-muted mb-0">
+                Fine-grained reactivity • Sync updates • No manual unsubscribe • Great for state
+            </p>
+        </div>
+
+        <a class="btn btn-outline-secondary" routerLink="/home">← Back</a>
+    </div>
+
+    <!-- Intro -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">What are Signals?</h5>
+            <p class="text-muted mb-0">{{ intro }}</p>
+        </div>
+    </div>
+
+    <!-- Characteristics -->
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6" *ngFor="let c of characteristics">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="mb-2">{{ c.title }}</h5>
+                    <ul class="text-muted mb-0">
+                        <li *ngFor="let p of c.points">{{ p }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Demo -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Live Demo (Signals State)</h5>
+                <span class="badge bg-primary">Demo</span>
+            </div>
+
+            <p class="text-muted">
+                This demo shows sync updates + fine-grained reactivity. When you change a signal,
+                only the parts reading that signal update.
+            </p>
+
+            <div class="demo-box">
+                <div class="row g-3">
+                    <div class="col-12 col-lg-6">
+                        <div class="mini-card">
+                            <div class="mini-title">State (Signals)</div>
+
+                            <div class="d-flex gap-2 flex-wrap mb-2">
+                                <button class="btn btn-outline-primary" (click)="inc()">+1</button>
+                                <button class="btn btn-outline-secondary" (click)="dec()">-1</button>
+                                <button class="btn btn-outline-danger" (click)="reset()">Reset</button>
+                            </div>
+
+                            <p class="mb-1">
+                                <strong>count:</strong> <code>{{ count() }}</code>
+                            </p>
+                            <p class="mb-1">
+                                <strong>doubleCount (computed):</strong> <code>{{ doubleCount() }}</code>
+                            </p>
+
+                            <hr />
+
+                            <label class="form-label fw-semibold mb-1">Name (signal)</label>
+                            <input class="form-control" [value]="name()" (input)="setName($any($event.target).value)"
+                                placeholder="Type name..." />
+
+                            <p class="mt-2 mb-0">
+                                <strong>greeting (computed):</strong> <code>{{ greeting() }}</code>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="mini-card">
+                            <div class="d-flex justify-content-between align-items-center gap-2">
+                                <div class="mini-title mb-0">Fine-grained UI Example</div>
+                                <button class="btn btn-sm btn-outline-success" (click)="toggleDetails()">
+                                    Toggle Details
+                                </button>
+                            </div>
+
+                            <p class="text-muted small mt-2">
+                                This block reads <code>showDetails()</code>. Toggle it to show/hide without extra
+                                wrappers.
+                            </p>
+
+                            <div *ngIf="showDetails()" class="alert alert-info mb-0">
+                                Details are visible ✅ (signal-based toggle)
+                            </div>
+
+                            <div *ngIf="!showDetails()" class="alert alert-warning mb-0">
+                                Details are hidden ❌
+                            </div>
+                        </div>
+
+                        <div class="mini-card mt-3">
+                            <div class="mini-title">effect() logs (auto updates)</div>
+
+                            <div class="logs">
+                                <div *ngIf="logs.length === 0" class="text-muted">
+                                    Click buttons / type name to see logs.
+                                </div>
+
+                                <ul *ngIf="logs.length > 0" class="mb-0">
+                                    <li *ngFor="let l of logs">{{ l }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-secondary mt-3 mb-0">
+                    Notice: You did not subscribe to anything manually — no unsubscribe needed.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+            <h5 class="mb-2">Code Snippets</h5>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">1) Create and update signals</div>
+                <pre class="code-box mb-0"><code [textContent]="createSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">2) computed() (derived state)</div>
+                <pre class="code-box mb-0"><code [textContent]="computedSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">3) effect() (side effects)</div>
+                <pre class="code-box mb-0"><code [textContent]="effectSnippet"></code></pre>
+            </div>
+
+            <div class="code-card">
+                <div class="fw-semibold mb-2">4) Signals vs RxJS unsubscribe</div>
+                <pre class="code-box mb-0"><code [textContent]="compareSnippet"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="mb-2">Key Takeaways</h5>
+            <ul class="text-muted mb-0">
+                <li *ngFor="let k of keyTakeaways">{{ k }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
