@@ -1,11 +1,11 @@
 <!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
-<div class="search-box">
-    <div class="input-group">
-        <input type="text" class="form-control" [placeholder]="placeholder" [ngModel]="value"
-            (ngModelChange)="onInput($event)" />
+<div class="search-shell">
+    <div class="search-icon">⌕</div>
 
-        <button *ngIf="value" class="btn btn-outline-secondary" type="button" (click)="clear()">
-            Clear
-        </button>
-    </div>
+    <input type="text" class="search-input" [placeholder]="placeholder" [ngModel]="value"
+        (ngModelChange)="onInput($event)" />
+
+    <button *ngIf="value" class="clear-btn" type="button" (click)="clear()">
+        Clear
+    </button>
 </div>

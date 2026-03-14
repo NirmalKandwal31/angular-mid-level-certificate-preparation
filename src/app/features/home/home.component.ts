@@ -5,13 +5,14 @@ import { TopicCategory, TopicCardItem } from '../../core/models/topic.model';
 import { TOPIC_CATEGORIES } from '../../core/data/topic-categories.data';
 import { TopicCardComponent } from '../../shared/components/topic-card/topic-card.component';
 import { SearchBoxComponent } from '../../shared/components/search-box/search-box.component';
+import { ThemeToggleComponent } from '../../shared/components/theme-toggle/theme-toggle.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule, TopicCardComponent, SearchBoxComponent],
+  imports: [RouterModule, CommonModule, TopicCardComponent, SearchBoxComponent, ThemeToggleComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   selectedCategoryIndex = signal<number | null>(null);
@@ -42,6 +43,17 @@ export class HomeComponent {
       return categoryMatch || itemMatch;
     });
   });
+
+  totalTopicsCount = computed(() =>
+    this.categories().reduce((sum, category) => sum + category.items.length, 0)
+  );
+
+  totalInterviewTracks = computed(() =>
+    this.categories().filter((category) =>
+      category.items.some((item) => item.route.includes('interview-questions'))
+    ).length
+  );
+
 
   private readonly router = inject(Router);
 

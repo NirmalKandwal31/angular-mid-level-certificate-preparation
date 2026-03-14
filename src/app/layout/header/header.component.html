@@ -1,0 +1,27 @@
+<header class="app-header">
+    <div class="container header-inner">
+        <a routerLink="/" class="brand">
+            <span class="brand-mark">A</span>
+            <div class="brand-text">
+                <span class="brand-title">Angular Prep Hub</span>
+                <small class="brand-subtitle">Mid-Level Interview Prep</small>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                Home
+            </a>
+            <a routerLink="/interview-questions" routerLinkActive="active-link">
+                Interview
+            </a>
+            <a routerLink="/crud-operation-example" routerLinkActive="active-link">
+                Practice
+            </a>
+        </nav>
+
+        <div class="header-actions">
+            <app-theme-toggle></app-theme-toggle>
+        </div>
+    </div>
+</header>

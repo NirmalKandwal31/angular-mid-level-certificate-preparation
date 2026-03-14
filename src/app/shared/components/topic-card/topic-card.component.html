@@ -1,27 +1,22 @@
-<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
-<div class="card h-100 category-card" [class.active]="isOpen" role="button" tabindex="0" [attr.aria-expanded]="isOpen"
-    (click)="onCardClick()" (keydown.enter)="onCardClick()" (keydown.space)="$event.preventDefault(); onCardClick()">
+<div class="card h-100 topic-card" [class.topic-card-active]="isOpen" role="button" tabindex="0"
+    [attr.aria-expanded]="isOpen" (click)="onCardClick()" (keydown.enter)="onCardClick()"
+    (keydown.space)="$event.preventDefault(); onCardClick()">
     <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start">
-            <div>
-                <h5 class="card-title mb-1">
-                    {{ title }}
-                </h5>
-                <p class="card-text text-muted mb-0">
-                    {{ description }}
-                </p>
-            </div>
-            <div class="d-flex flex-column align-items-end gap-2">
-                <span class="badge bg-primary">
-                    {{ itemCount }}
-                </span>
-                <span class="open-indicator" *ngIf="isOpen">
-                    ▼ open
-                </span>
-                <span class="open-indicator text-muted" *ngIf="!isOpen">
-                    ▶
-                </span>
-            </div>
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0 fw-bold text-dark">{{ title }}</h5>
+            <span class="badge bg-primary">{{ itemCount }}</span>
+        </div>
+
+        <p class="text-muted mb-3">{{ description }}</p>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <small class="text-primary fw-semibold">
+                {{ isOpen ? 'Opened' : 'Explore topics' }}
+            </small>
+
+            <small class="text-muted">
+                {{ isOpen ? '▼' : '▶' }}
+            </small>
         </div>
     </div>
 </div>

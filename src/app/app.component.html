@@ -1,10 +1,10 @@
-<div style="padding: 10px">
-    <button class="btn btn-dark" *ngIf="showHomeButton" (click)="goHome()">🏠 Home</button>
-</div>
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<app-header></app-header>
 
-<!-- Scroll To Top button (fixed bottom-right) -->
+<main class="app-shell">
+    <router-outlet></router-outlet>
+</main>
+
 <button class="scroll-top btn btn-primary" *ngIf="showScrollTop" (click)="scrollToTop()" aria-label="Scroll to top">
     ⬆
 </button>
-
-<router-outlet></router-outlet>

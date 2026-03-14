@@ -1,10 +1,79 @@
+.hero-section {
+  padding: 28px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+  border: 1px solid #dbe8ff;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e7f0ff;
+  color: #0d6efd;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.hero-title {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  margin-bottom: 18px;
+  color: #5f6b7a;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.stat-label {
+  margin-top: 4px;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
 .subtopics-wrap {
   margin-top: 14px;
-  padding: 14px;
+  padding: 18px;
   border: 1px solid #e9ecef;
-  border-radius: 10px;
+  border-radius: 18px;
   background: #fff;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
   scroll-margin-top: 12px;
 }
 
@@ -13,6 +82,50 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-bottom: 10px;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
   border-bottom: 1px solid #f1f3f5;
+}
+
+.subtopic-card {
+  height: 100%;
+  border: 1px solid #edf0f2;
+  border-radius: 16px;
+  background: #fcfdff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+.subtopic-card-body {
+  height: 100%;
+  padding: 16px;
+}
+
+.subtopic-pill {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #0d6efd;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.subtopic-title {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.subtopic-text {
+  color: #667085;
+  line-height: 1.55;
+}
+
+@media (max-width: 767px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

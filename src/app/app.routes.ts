@@ -19,6 +19,7 @@ import { formsRoutes } from './practice-topics/angular-forms/angular-forms.route
 import { ngModulesRoutes } from './practice-topics/angular-ng-modules/angular-ng-modules.routes';
 import { practiceProjectsRoutes } from './features/practice/practice-project-details/practice-project.routes';
 import { TopicDetailComponent } from './features/topics/topic-detail/topic-detail.component';
+import { AnswerReviewComponent } from './features/interview/answer-review/answer-review.component';
 
 
 export const routes: Routes = [
@@ -29,6 +30,8 @@ export const routes: Routes = [
       import('./features/home/home.component').then((m) => m.HomeComponent),
   },
   { path: 'topics/:topicId', component: TopicDetailComponent },
+  { path: 'ai-answer-review', component: AnswerReviewComponent },
+
 
   // ✅ all topic routes from separate files
   ...basicsOfAngularRoutes,

@@ -9,7 +9,7 @@ import { TopicCardItem } from '../../../core/models/topic.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './topic-detail.component.html',
-  styleUrl: './topic-detail.component.scss',
+  styleUrls: ['./topic-detail.component.scss'],
 })
 export class TopicDetailComponent {
   private readonly route = inject(ActivatedRoute);

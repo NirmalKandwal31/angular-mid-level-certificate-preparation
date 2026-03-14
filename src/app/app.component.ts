@@ -1,41 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
+import { HeaderComponent } from './layout/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-mid-cert-practice';
+  showScrollTop = false;
 
-  showHomeButton: boolean = true;   // (optional rename for clarity)
-  showScrollTop: boolean = false;
+  private readonly router = inject(Router);
 
-  constructor(private router: Router) {
+  constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.showHomeButton = this.router.url !== '/home';
-        // route change pe top button ko bhi reset kar do
         this.showScrollTop = window.scrollY > 300;
       });
   }
 
-  @HostListener('window:scroll', [])
+  @HostListener('window:scroll')
   onWindowScroll() {
     this.showScrollTop = window.scrollY > 300;
-  }
-
-  goHome() {
-    if (this.router.url !== '/home') {
-      this.showHomeButton = false;
-      this.router.navigate(['/home']);
-    }
   }
 
   scrollToTop() {

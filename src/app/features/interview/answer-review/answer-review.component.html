@@ -1,0 +1,33 @@
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<div class="container py-4">
+    <div class="review-card">
+        <h3 class="mb-3">AI Answer Reviewer</h3>
+
+        <div class="mb-3">
+            <label class="form-label">Topic</label>
+            <input class="form-control" [ngModel]="topic()" (ngModelChange)="topic.set($event)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Question</label>
+            <textarea class="form-control" rows="3" [ngModel]="question()"
+                (ngModelChange)="question.set($event)"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Your Answer</label>
+            <textarea class="form-control" rows="8" [ngModel]="answer()"
+                (ngModelChange)="answer.set($event)"></textarea>
+        </div>
+
+        <button class="btn btn-primary" (click)="submit()" [disabled]="loading()">
+            {{ loading() ? 'Reviewing...' : 'Review Answer' }}
+        </button>
+
+        <div class="result-box mt-4" *ngIf="result()">
+            <h5>AI Feedback</h5>
+            <pre>{{ result() }}</pre>
+        </div>
+    </div>
+</div>

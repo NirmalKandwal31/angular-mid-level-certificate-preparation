@@ -1,11 +1,42 @@
 <!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
 <div #pageTop class="container py-3">
-    <h3 class="mb-1">Angular Mid-Level Developer Preparation Hub</h3>
-    <p class="text-muted mb-3">
-        Structured preparation for Angular mid-level developer interviews and certifications.
-        Select a major topic to explore sub-topics with in-depth explanations, real-world patterns,
-        and interview-focused questions.
-    </p>
+    <section class="hero-section mb-4">
+        <div class="hero-content">
+            <span class="hero-badge">Angular Interview Prep</span>
+            <h1 class="hero-title">Angular Mid-Level Developer Preparation Hub</h1>
+            <p class="hero-subtitle">
+                Structured preparation for Angular mid-level developer interviews and certifications.
+                Explore topics, revise concepts, practice projects, and prepare with an interview-first mindset.
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" (click)="selectedCategoryIndex.set(0)">
+                    Start Learning
+                </button>
+                <button class="btn btn-outline-primary" routerLink="/interview-questions">
+                    Interview Questions
+                </button>
+                <app-theme-toggle class="ms-2"></app-theme-toggle>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-grid mb-4">
+        <div class="stat-card">
+            <div class="stat-value">{{ filteredCategories().length }}</div>
+            <div class="stat-label">Major Categories</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">{{ totalTopicsCount() }}</div>
+            <div class="stat-label">Sub Topics</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">{{ totalInterviewTracks() }}</div>
+            <div class="stat-label">Interview Tracks</div>
+        </div>
+    </section>
 
     <app-search-box placeholder="Search topics, Angular, Signals, RxJS..." [value]="searchTerm()"
         (valueChange)="updateSearch($event)">
@@ -30,6 +61,7 @@
             <h5 class="mb-0">
                 {{ filteredCategories()[selectedCategoryIndex()!].title }} — Sub Topics
             </h5>
+
             <button class="btn btn-sm btn-outline-secondary" (click)="selectedCategoryIndex.set(null)">
                 Close
             </button>
@@ -38,10 +70,11 @@
         <div class="row g-3 mt-1">
             <div class="col-12 col-md-6 col-lg-4"
                 *ngFor="let t of filteredCategories()[selectedCategoryIndex()!].items">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">{{ t.title }}</h6>
-                        <p class="card-text text-muted flex-grow-1">{{ t.description }}</p>
+                <div class="subtopic-card h-100">
+                    <div class="subtopic-card-body d-flex flex-column">
+                        <div class="subtopic-pill">Sub Topic</div>
+                        <h6 class="subtopic-title">{{ t.title }}</h6>
+                        <p class="subtopic-text flex-grow-1">{{ t.description }}</p>
 
                         <button class="btn btn-primary w-100" (click)="$event.stopPropagation(); navigateTo(t)">
                             Go To
