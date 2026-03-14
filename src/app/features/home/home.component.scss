@@ -1,0 +1,18 @@
+.subtopics-wrap {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+  scroll-margin-top: 12px;
+}
+
+.subtopics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f3f5;
+}

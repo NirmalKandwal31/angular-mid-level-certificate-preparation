@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
@@ -16,14 +16,14 @@ import {
   templateUrl: './crud-operation-using-reactive-forms-example.component.html',
   styleUrl: './crud-operation-using-reactive-forms-example.component.scss',
 })
-export class CrudOperationUsingReactiveFormsExampleComponent {
+export class CrudOperationUsingReactiveFormsExampleComponent implements OnInit {
   userList: any[] = [];
   userForm!: FormGroup;
   // 🔹 flags for edit mode
   isEditMode = false;
   editingUserId: number | null = null;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({

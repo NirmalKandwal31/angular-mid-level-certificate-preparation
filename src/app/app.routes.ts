@@ -17,15 +17,18 @@ import { rxjsRoutes } from './practice-topics/basic-of-rxjs/basic-of-rxjs.routes
 import { pipesRoutes } from './practice-topics/basic-of-pipes/basic-of-pipes.routes';
 import { formsRoutes } from './practice-topics/angular-forms/angular-forms.routes';
 import { ngModulesRoutes } from './practice-topics/angular-ng-modules/angular-ng-modules.routes';
-import { practiceProjectsRoutes } from './practice-topics/practice-projects/practice-project.routes';
+import { practiceProjectsRoutes } from './features/practice/practice-project-details/practice-project.routes';
+import { TopicDetailComponent } from './features/topics/topic-detail/topic-detail.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
     loadComponent: () =>
-      import('./home/home.component').then((m) => m.HomeComponent),
+      import('./features/home/home.component').then((m) => m.HomeComponent),
   },
+  { path: 'topics/:topicId', component: TopicDetailComponent },
 
   // ✅ all topic routes from separate files
   ...basicsOfAngularRoutes,
@@ -75,7 +78,7 @@ export const routes: Routes = [
     path: 'interview-questions/:topic',
     loadComponent: () =>
       import(
-        './practice-topics/interview-questions/interview-questions.component'
+        './features/interview/interview-questions/interview-questions.component'
       ).then((m) => m.InterviewQuestionsComponent),
   },
   {

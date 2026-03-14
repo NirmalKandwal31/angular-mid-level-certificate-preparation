@@ -1,0 +1,42 @@
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<div class="container py-4">
+    <ng-container *ngIf="topic() as topic; else notFound">
+        <button class="btn btn-outline-secondary btn-sm mb-3" (click)="goBack()">
+            ← Back
+        </button>
+
+        <div class="topic-detail-card">
+            <h2 class="mb-2">{{ topic.title }}</h2>
+            <p class="text-muted mb-4">{{ topic.description }}</p>
+
+            <section class="mb-4" *ngIf="topic.overview">
+                <h5>Overview</h5>
+                <p class="mb-0">{{ topic.overview }}</p>
+            </section>
+
+            <section class="mb-4" *ngIf="topic.keyPoints?.length">
+                <h5>Key Points</h5>
+                <ul class="mb-0">
+                    <li *ngFor="let point of topic.keyPoints">{{ point }}</li>
+                </ul>
+            </section>
+
+            <section *ngIf="topic.interviewTips?.length">
+                <h5>Interview Tips</h5>
+                <ul class="mb-0">
+                    <li *ngFor="let tip of topic.interviewTips">{{ tip }}</li>
+                </ul>
+            </section>
+        </div>
+    </ng-container>
+
+    <ng-template #notFound>
+        <div class="topic-detail-card">
+            <h3 class="mb-2">Topic not found</h3>
+            <p class="text-muted mb-3">The requested topic could not be found.</p>
+            <button class="btn btn-outline-secondary btn-sm" (click)="goBack()">
+                Go Back
+            </button>
+        </div>
+    </ng-template>
+</div>

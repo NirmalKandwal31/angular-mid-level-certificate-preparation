@@ -1,0 +1,26 @@
+[
+  {
+    "from": "DUB",
+    "to": "STN",
+    "date": "2026-02-10",
+    "price": 45
+  },
+  {
+    "from": "DUB",
+    "to": "BCN",
+    "date": "2026-02-11",
+    "price": 60
+  },
+  {
+    "from": "LON",
+    "to": "PAR",
+    "date": "2026-02-12",
+    "price": 80
+  },
+  {
+    "from": "BER",
+    "to": "ROM",
+    "date": "2026-02-13",
+    "price": 55
+  }
+]

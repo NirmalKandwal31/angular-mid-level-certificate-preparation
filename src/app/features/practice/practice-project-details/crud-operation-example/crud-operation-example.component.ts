@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CRUDService, Users } from '../../../../services/crud-service.service';
+import { CRUDService, Users } from '../../../../../services/crud-service.service';
 
 
-type MethodDoc = {
+
+interface MethodDoc {
   name: string;
   purpose: string;
   whenUsed: string;
@@ -19,7 +20,7 @@ type MethodDoc = {
   templateUrl: './crud-operation-example.component.html',
   styleUrl: './crud-operation-example.component.scss',
 })
-export class CrudOperationExampleComponent {
+export class CrudOperationExampleComponent implements OnInit {
   users: Users[] = [];
   lastAction = 'Page loaded';
 

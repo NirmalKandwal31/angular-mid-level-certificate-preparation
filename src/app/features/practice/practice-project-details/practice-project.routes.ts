@@ -69,6 +69,10 @@ export const practiceProjectsRoutes: Routes = [
             .then(m => m.Step3Component),
       },
     ],
+  },
+  {
+    path: 'ryanair-cheap-flights',
+    loadComponent: () => import('./ryanair-cheap-flights-app/ryanair-cheap-flights-app.component').then((m) => m.RyanairCheapFlightsAppComponent)
   }
 
 ];

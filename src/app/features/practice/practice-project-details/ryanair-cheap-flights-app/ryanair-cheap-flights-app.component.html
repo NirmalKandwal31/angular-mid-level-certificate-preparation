@@ -1,0 +1,17 @@
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+    <input placeholder="From (e.g. DUB)" (input)="onFrom($any($event.target).value)" />
+    <input placeholder="To (e.g. STN)" (input)="onTo($any($event.target).value)" />
+    <input type="number" placeholder="Max Price" (input)="onMaxPrice($any($event.target).value)" />
+</div>
+
+<ul *ngIf="(filteredFlights$ | async) as flights">
+    <li *ngFor="let f of flights; trackBy: trackById">
+        <b>{{ f.from }} → {{ f.to }}</b>
+        | {{ f.date }}
+        | €{{ f.price }}
+        <span *ngIf="f.airline">| {{ f.airline }}</span>
+    </li>
+
+    <li *ngIf="flights.length === 0">No results</li>
+</ul>
