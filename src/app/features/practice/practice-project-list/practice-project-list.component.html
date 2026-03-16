@@ -1,0 +1,220 @@
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<div class="practice-page">
+    <div class="practice-page-inner">
+        <section class="practice-hero mb-4">
+            <div class="practice-hero-top">
+                <button class="btn btn-outline-secondary btn-sm" (click)="goBack()">
+                    ← Back
+                </button>
+                <span class="practice-chip">Hands-on Practice</span>
+            </div>
+
+            <h1 class="practice-title">Angular Practice Projects Hub</h1>
+            <p class="practice-subtitle">
+                Strengthen your Angular fundamentals, certification coverage, and interview confidence
+                through practical mini-projects focused on real implementation patterns.
+            </p>
+
+            <div class="practice-hero-actions">
+                <button class="btn btn-primary" (click)="setDifficulty('Beginner')">
+                    Start with Beginner Projects
+                </button>
+                <button class="btn btn-outline-primary" (click)="openProject('/crud-operation-example')">
+                    Open CRUD Project
+                </button>
+                <button class="btn btn-outline-secondary" (click)="setDifficulty('All')">
+                    View All Projects
+                </button>
+            </div>
+        </section>
+
+        <section class="practice-stats mb-4">
+            <div class="practice-stat-card">
+                <div class="practice-stat-value">{{ projects().length }}</div>
+                <div class="practice-stat-label">Practice Projects</div>
+            </div>
+
+            <div class="practice-stat-card">
+                <div class="practice-stat-value">Hands-on</div>
+                <div class="practice-stat-label">Implementation Focus</div>
+            </div>
+
+            <div class="practice-stat-card">
+                <div class="practice-stat-value">Portfolio</div>
+                <div class="practice-stat-label">Confidence Building</div>
+            </div>
+        </section>
+
+        <section class="practice-tracks mb-4">
+            <div class="section-heading-wrap">
+                <h2 class="section-heading">Why Practice Projects Matter</h2>
+                <p class="section-subheading">
+                    Use these projects to apply Angular concepts beyond theory and improve practical confidence.
+                </p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="mode-card">
+                        <div class="mode-badge">Confidence</div>
+                        <h5 class="mode-title">Build Practical Confidence</h5>
+                        <p class="mode-text">
+                            Move beyond concepts and understand how Angular features work together inside real flows.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="mode-card">
+                        <div class="mode-badge">Application</div>
+                        <h5 class="mode-title">Apply Certification Topics</h5>
+                        <p class="mode-text">
+                            Reinforce routing, forms, services, RxJS, components, and UI state through implementation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="mode-card">
+                        <div class="mode-badge">Interview</div>
+                        <h5 class="mode-title">Explain Real Work Better</h5>
+                        <p class="mode-text">
+                            Projects help you describe practical Angular decisions more clearly during interviews.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommended-order-section mb-4">
+            <div class="section-heading-wrap">
+                <h2 class="section-heading">Recommended Practice Order</h2>
+                <p class="section-subheading">
+                    Follow this sequence to gradually increase confidence from simple CRUD flows to richer UI patterns.
+                </p>
+            </div>
+
+            <div class="practice-order-grid">
+                <div class="practice-order-step">
+                    <span class="practice-order-number">1</span>
+                    <div>
+                        <h6 class="practice-order-title">CRUD Operation Example</h6>
+                        <p class="practice-order-text">Start with basic create, read, update, and delete workflows.</p>
+                    </div>
+                </div>
+
+                <div class="practice-order-step">
+                    <span class="practice-order-number">2</span>
+                    <div>
+                        <h6 class="practice-order-title">CRUD with Reactive Forms</h6>
+                        <p class="practice-order-text">Add form structure, validation, and reactive patterns.</p>
+                    </div>
+                </div>
+
+                <div class="practice-order-step">
+                    <span class="practice-order-number">3</span>
+                    <div>
+                        <h6 class="practice-order-title">Tesla Project</h6>
+                        <p class="practice-order-text">Practice UI composition, reusable sections, and presentation
+                            flow.</p>
+                    </div>
+                </div>
+
+                <div class="practice-order-step">
+                    <span class="practice-order-number">4</span>
+                    <div>
+                        <h6 class="practice-order-title">Tesla Project Without Signal</h6>
+                        <p class="practice-order-text">Compare implementation style and state management choices.</p>
+                    </div>
+                </div>
+
+                <div class="practice-order-step">
+                    <span class="practice-order-number">5</span>
+                    <div>
+                        <h6 class="practice-order-title">Ryanair Cheap Flights</h6>
+                        <p class="practice-order-text">Handle more dynamic UI, filtering, and interactive display
+                            behavior.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="practice-toolbar mb-4">
+            <div class="toolbar-left">
+                <h2 class="section-heading mb-1">Project Library</h2>
+                <p class="section-subheading mb-0">
+                    Filter projects by search term or difficulty.
+                </p>
+            </div>
+
+            <div class="toolbar-right">
+                <input class="practice-search" type="text" placeholder="Search projects or skills..."
+                    [value]="searchTerm()" (input)="updateSearch(($any($event.target).value))" />
+
+                <div class="difficulty-filters">
+                    <button type="button" class="filter-chip" [class.active]="selectedDifficulty() === 'All'"
+                        (click)="setDifficulty('All')">
+                        All
+                    </button>
+
+                    <button type="button" class="filter-chip" [class.active]="selectedDifficulty() === 'Beginner'"
+                        (click)="setDifficulty('Beginner')">
+                        Beginner
+                    </button>
+
+                    <button type="button" class="filter-chip" [class.active]="selectedDifficulty() === 'Intermediate'"
+                        (click)="setDifficulty('Intermediate')">
+                        Intermediate
+                    </button>
+
+                    <button type="button" class="filter-chip" [class.active]="selectedDifficulty() === 'Advanced'"
+                        (click)="setDifficulty('Advanced')">
+                        Advanced
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-grid-section">
+            <div class="projects-grid" *ngIf="filteredProjects().length; else noResults">
+                <div class="project-card" *ngFor="let project of filteredProjects()">
+                    <div class="project-card-top">
+                        <span class="difficulty-pill" [attr.data-level]="project.difficulty">
+                            {{ project.difficulty }}
+                        </span>
+                        <span class="project-type">{{ project.type }}</span>
+                    </div>
+
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+
+                    <div class="project-skills">
+                        <span class="project-skill" *ngFor="let skill of project.skills">{{ skill }}</span>
+                    </div>
+
+                    <div class="project-learn-box">
+                        <h6 class="learn-box-title">What you'll practice</h6>
+                        <ul class="learn-box-list">
+                            <li *ngFor="let point of project.outcomes">{{ point }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-footer">
+                        <button class="btn btn-primary w-100" (click)="openProject(project.route)">
+                            Open Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #noResults>
+                <div class="no-results-card">
+                    <h4 class="mb-2">No practice projects found</h4>
+                    <p class="mb-0 text-muted">
+                        Try another search term or change the selected difficulty filter.
+                    </p>
+                </div>
+            </ng-template>
+        </section>
+    </div>
+</div>
